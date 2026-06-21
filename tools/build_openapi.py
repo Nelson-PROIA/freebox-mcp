@@ -152,7 +152,9 @@ def operation_object(op: dict, ir: dict) -> dict:
         seen_params.add(name)
         # The docs don't state path-param types; a URL segment is a string. We don't
         # guess (e.g. "id" -> integer) — that would be inventing data Free didn't give.
-        parameters.append({"name": name, "in": "path", "required": True, "schema": {"type": "string"}})
+        parameters.append(
+            {"name": name, "in": "path", "required": True, "schema": {"type": "string"}}
+        )
     for name in op.get("query_params", []):
         if name in seen_params:
             continue
