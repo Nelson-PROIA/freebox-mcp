@@ -1,11 +1,19 @@
 name: Regenerate spec
 
-# Weekly: re-scrape the official Freebox docs and rebuild the OpenAPI spec
+# Re-scrape the official Freebox docs and rebuild the OpenAPI spec
 # deterministically (pure Python, no AI). If the generated spec changed and the
 # tests pass, bump the version, commit, tag, and release — fully hands-off.
+#
+# IMPORTANT: dev.freebox.fr (Free/Iliad) silently drops connections from
+# GitHub-hosted runner IPs, so the scrape MUST run on a self-hosted runner on a
+# France-reachable network (e.g. an always-on Raspberry Pi). Register such a
+# runner, then set the repo variable REGEN_RUNNER to its label and re-enable the
+# schedule below. Until then this runs only on manual dispatch and will fail on
+# GitHub-hosted runners at the scrape step. The release pipeline it calls runs on
+# GitHub-hosted runners and is unaffected.
 on:
-  schedule:
-    - cron: "17 4 * * 1" # Mondays 04:17 UTC
+  # schedule:
+  #   - cron: "17 4 * * 1" # Mondays 04:17 UTC — re-enable once REGEN_RUNNER is set
   workflow_dispatch:
 
 permissions:
@@ -17,21 +25,19 @@ concurrency:
 
 jobs:
   regenerate:
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.REGEN_RUNNER || 'ubuntu-latest' }}
     permissions:
       contents: write # commit + tag the regenerated spec
     outputs:
       changed: ${{ steps.diff.outputs.changed }}
       version: ${{ steps.bump.outputs.version }}
     steps:
+      - uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
-      - name: Network diagnostic (TEMP — is dev.freebox.fr reachable from CI?)
-        run: |
-          curl -sS -o /dev/null -w "google : %{http_code} in %{time_total}s\n" --max-time 20 https://www.google.com || echo "google FAILED"
-          curl -sS -o /dev/null -w "pypi   : %{http_code} in %{time_total}s\n" --max-time 20 https://pypi.org/simple/ || echo "pypi FAILED"
-          curl -sS -o /dev/null -w "freebox: %{http_code} in %{time_total}s\n" --max-time 30 https://dev.freebox.fr/sdk/os/ || echo "freebox FAILED (timeout/blocked)"
       - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
           version: "0.11.7"
