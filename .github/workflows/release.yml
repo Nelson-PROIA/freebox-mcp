@@ -16,8 +16,6 @@ on:
 permissions:
   contents: read
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}
 
 jobs:
   build:
@@ -94,10 +92,13 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lowercase image ref (OCI refs must be lowercase)
+        id: img
+        run: echo "ref=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
       - id: meta
         uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
         with:
-          images: ${{ env.IMAGE }}
+          images: ${{ steps.img.outputs.ref }}
           tags: |
             type=ref,event=tag
             type=semver,pattern={{version}}
@@ -114,11 +115,12 @@ jobs:
       - name: Sign image (cosign keyless)
         env:
           DIGEST: ${{ steps.push.outputs.digest }}
-        run: cosign sign --yes "${IMAGE}@${DIGEST}"
+          REF: ${{ steps.img.outputs.ref }}
+        run: cosign sign --yes "${REF}@${DIGEST}"
       - name: Attest image provenance
         uses: actions/attest-build-provenance@c074443f1aee8d4aeeae555aebba3282517141b2 # v2.2.3
         with:
-          subject-name: ${{ env.IMAGE }}
+          subject-name: ${{ steps.img.outputs.ref }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
 
