@@ -504,16 +504,19 @@ def parse_operation(dt: Tag, inv_op, known_objects: set[str]) -> Operation:
     summary = ""
     description = ""
     if dd:
-        first_p = dd.find("p", recursive=False)
-        summary = _clean_text(first_p) if first_p else ""
-        # description = all prose <p> before first example, joined
-        chunks = []
+        # Collect prose <p> up to the first example block, skipping the example
+        # labels themselves ("Example request:", an HTTP line, ...) so they never
+        # become the operation's summary/description.
+        prose = []
         for p in dd.find_all("p", recursive=False):
             t = _clean_text(p)
-            if t.lower().startswith("example "):
+            low = t.lower()
+            if low.startswith("example") or low.startswith("http/") or "http/1.1" in low:
                 break
-            chunks.append(t)
-        description = " ".join(chunks).strip()
+            if t:
+                prose.append(t)
+        summary = prose[0] if prose else ""
+        description = " ".join(prose).strip()
     req_ex, resp_ex, resp_raw = _example_blocks(dd) if dd else (None, None, None)
 
     # Templated multi-endpoint paths e.g. /api/v4/[number,address,url,email]/

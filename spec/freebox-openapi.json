@@ -581,8 +581,8 @@
     "/airmedia/receviers/{receiver_name}/": {
       "post": {
         "operationId": "post_airmedia_receviers_receiver_name",
-        "summary": "Example: display a photo on the Freebox Player :",
-        "description": "Example: display a photo on the Freebox Player :\n\nRequires the `settings` permission.\n\nError codes: `unknown_target`, `no_client`, `set_pass`, `set_onscreen_code`, `no_ctrl`, `http`, `bad_session`, `bad_name`, `bad_device_id`, `bad_remote_id`, `req_in_progress`, `fetch`, `no_display`, `playback_state`, `no_slideshow_srv`, `no_mem`, `inout_file`, `no_volume_control`, `connect`, `unauthorized`, `unsupported_media`, `bad_type`, `unimplemented`",
+        "summary": "POST /airmedia/receviers/{receiver_name}/",
+        "description": "POST /airmedia/receviers/{receiver_name}/\n\nRequires the `settings` permission.\n\nError codes: `unknown_target`, `no_client`, `set_pass`, `set_onscreen_code`, `no_ctrl`, `http`, `bad_session`, `bad_name`, `bad_device_id`, `bad_remote_id`, `req_in_progress`, `fetch`, `no_display`, `playback_state`, `no_slideshow_srv`, `no_mem`, `inout_file`, `no_volume_control`, `connect`, `unauthorized`, `unsupported_media`, `bad_type`, `unimplemented`",
         "tags": [
           "airmedia"
         ],
@@ -3665,8 +3665,8 @@
     "/dhcp/dynamic_lease/": {
       "get": {
         "operationId": "get_dhcp_dynamic_lease",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "List dhcp dynamic lease",
+        "description": "Returns a list of `DhcpDynamicLease`.\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -3754,8 +3754,8 @@
     "/dhcp/static_lease/": {
       "get": {
         "operationId": "get_dhcp_static_lease",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "List dhcp static lease",
+        "description": "Returns a list of `DhcpStaticLease`.\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -3841,8 +3841,8 @@
       },
       "post": {
         "operationId": "post_dhcp_static_lease",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "POST /dhcp/static_lease/",
+        "description": "POST /dhcp/static_lease/\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -3937,8 +3937,8 @@
     "/dhcp/static_lease/{id}": {
       "delete": {
         "operationId": "delete_dhcp_static_lease_id",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "DELETE /dhcp/static_lease/{id}/",
+        "description": "DELETE /dhcp/static_lease/{id}/\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -4025,8 +4025,8 @@
       },
       "get": {
         "operationId": "get_dhcp_static_lease_id",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "Get dhcp static lease",
+        "description": "Returns `DhcpStaticLease`.\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -4120,8 +4120,8 @@
       },
       "put": {
         "operationId": "put_dhcp_static_lease_id",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
+        "summary": "PUT /dhcp/static_lease/{id}/",
+        "description": "PUT /dhcp/static_lease/{id}/\n\nRequires the `settings` permission.\n\nError codes: `inval`, `inval_netmask`, `inval_ip_range`, `inval_ip_range_net`, `inval_gw_net`, `exist`, `nodev`, `noent`, `netdown`, `busy`",
         "tags": [
           "dhcp"
         ],
@@ -5023,8 +5023,8 @@
     "/downloads/blacklist": {
       "post": {
         "operationId": "post_downloads_blacklist",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "POST /downloads/blacklist/",
+        "description": "POST /downloads/blacklist/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -5417,8 +5417,8 @@
     "/downloads/blacklist/{host}": {
       "delete": {
         "operationId": "delete_downloads_blacklist_host",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "DELETE /downloads/blacklist/{host}/",
+        "description": "DELETE /downloads/blacklist/{host}/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -5815,8 +5815,8 @@
     "/downloads/stats": {
       "get": {
         "operationId": "get_downloads_stats",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "Get downloads stats",
+        "description": "Returns `DownloadStats`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -8226,8 +8226,8 @@
     "/downloads/{task_id}/blacklist": {
       "get": {
         "operationId": "get_downloads_task_id_blacklist",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "List downloads blacklist",
+        "description": "Returns a list of `DownloadBlacklistEntry`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -8634,8 +8634,8 @@
     "/downloads/{task_id}/blacklist/empty": {
       "delete": {
         "operationId": "delete_downloads_task_id_blacklist_empty",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "DELETE /downloads/{task_id}/blacklist/empty/",
+        "description": "DELETE /downloads/{task_id}/blacklist/empty/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -9032,8 +9032,8 @@
     "/downloads/{task_id}/files": {
       "get": {
         "operationId": "get_downloads_task_id_files",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "List downloads files",
+        "description": "Returns a list of `DownloadFile`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -9440,8 +9440,8 @@
     "/downloads/{task_id}/files/{file_id}": {
       "put": {
         "operationId": "put_downloads_task_id_files_file_id",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "PUT /downloads/{task_id}/files/{file_id}/",
+        "description": "PUT /downloads/{task_id}/files/{file_id}/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -9847,8 +9847,8 @@
     "/downloads/{task_id}/peers": {
       "get": {
         "operationId": "get_downloads_task_id_peers",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "List downloads peers",
+        "description": "Returns a list of `DownloadPeer`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -10255,8 +10255,8 @@
     "/downloads/{task_id}/pieces": {
       "get": {
         "operationId": "get_downloads_task_id_pieces",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "Get downloads pieces",
+        "description": "Get downloads pieces\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -10660,8 +10660,8 @@
     "/downloads/{task_id}/trackers": {
       "get": {
         "operationId": "get_downloads_task_id_trackers",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "List downloads trackers",
+        "description": "Returns a list of `DownloadTracker`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -11066,8 +11066,8 @@
       },
       "post": {
         "operationId": "post_downloads_task_id_trackers",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "POST /downloads/{task_id}/trackers/",
+        "description": "POST /downloads/{task_id}/trackers/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -11464,8 +11464,8 @@
     "/downloads/{task_id}/trackers/{announce}": {
       "delete": {
         "operationId": "delete_downloads_task_id_trackers_announce",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "DELETE /downloads/{task_id}/trackers/{announce}/",
+        "description": "DELETE /downloads/{task_id}/trackers/{announce}/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -11869,8 +11869,8 @@
       },
       "put": {
         "operationId": "put_downloads_task_id_trackers_announce",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "PUT /downloads/{task_id}/trackers/{announce}/",
+        "description": "PUT /downloads/{task_id}/trackers/{announce}/\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -13409,8 +13409,8 @@
     "/dl/{path}": {
       "get": {
         "operationId": "get_dl_path",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "Get dl",
+        "description": "Get dl\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -13619,8 +13619,8 @@
     "/fs/archive/": {
       "post": {
         "operationId": "post_fs_archive",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/archive/",
+        "description": "POST /fs/archive/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -13825,8 +13825,8 @@
     "/fs/cat/": {
       "post": {
         "operationId": "post_fs_cat",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/cat/",
+        "description": "POST /fs/cat/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -14031,8 +14031,8 @@
     "/fs/cp/": {
       "post": {
         "operationId": "post_fs_cp",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/cp/",
+        "description": "POST /fs/cp/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -14237,8 +14237,8 @@
     "/fs/extract/": {
       "post": {
         "operationId": "post_fs_extract",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/extract/",
+        "description": "POST /fs/extract/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -14443,8 +14443,8 @@
     "/fs/hash/": {
       "post": {
         "operationId": "post_fs_hash",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/hash/",
+        "description": "POST /fs/hash/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -15113,8 +15113,8 @@
     "/fs/mkdir/": {
       "post": {
         "operationId": "post_fs_mkdir",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/mkdir/",
+        "description": "POST /fs/mkdir/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -15312,8 +15312,8 @@
     "/fs/mv/": {
       "post": {
         "operationId": "post_fs_mv",
-        "summary": "Example request for moving files :",
-        "description": "Example request for moving files :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/mv/",
+        "description": "POST /fs/mv/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -15518,8 +15518,8 @@
     "/fs/rename/": {
       "post": {
         "operationId": "post_fs_rename",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/rename/",
+        "description": "POST /fs/rename/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -15724,8 +15724,8 @@
     "/fs/repair/": {
       "post": {
         "operationId": "post_fs_repair",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/repair/",
+        "description": "POST /fs/repair/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -15930,8 +15930,8 @@
     "/fs/rm/": {
       "post": {
         "operationId": "post_fs_rm",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "POST /fs/rm/",
+        "description": "POST /fs/rm/\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -16995,8 +16995,8 @@
     "/fs/tasks/{id}/hash": {
       "get": {
         "operationId": "get_fs_tasks_id_hash",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
+        "summary": "Get fs tasks hash",
+        "description": "Get fs tasks hash\n\nRequires the `explorer` permission.\n\nError codes: `invalid_id`, `path_not_found`, `internal_error`, `disk_unavailable`, `invalid_request`, `invalid_conflict_mode`, `exec_failed`, `out_of_memory`, `task_not_found`, `invalid_state`, `invalid_task_type`, `destination_conflict`, `access_denied`, `disk_full`, `none`, `archive_read_failed`, `archive_open_failed`, `archive_write_failed`, `chdir_failed`, `dest_is_not_dir`, `file_exists`, `file_not_found`, `mkdir_failed`, `open_input_failed`, `open_output_failed`, `opendir_failed`, `overwrite_failed`, `path_too_big`, `repair_failed`, `rmdir_failed`",
         "tags": [
           "fs"
         ],
@@ -17564,8 +17564,8 @@
     "/lan/browser/interfaces/": {
       "get": {
         "operationId": "get_lan_browser_interfaces",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `ioerror`, `inval`, `inval_gateway_ip`, `nodev`, `nohost`, `nomem`, `netdown`",
+        "summary": "List lan browser interfaces",
+        "description": "List lan browser interfaces\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `ioerror`, `inval`, `inval_gateway_ip`, `nodev`, `nohost`, `nomem`, `netdown`",
         "tags": [
           "lan"
         ],
@@ -18337,8 +18337,8 @@
     "/login/": {
       "get": {
         "operationId": "get_login",
-        "summary": "Example request :",
-        "description": "Example request :\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
+        "summary": "Get login",
+        "description": "Get login\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
         "tags": [
           "login"
         ],
@@ -18427,8 +18427,8 @@
     "/login/authorize/": {
       "post": {
         "operationId": "post_login_authorize",
-        "summary": "Example request :",
-        "description": "Example request :\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
+        "summary": "POST /login/authorize/",
+        "description": "POST /login/authorize/\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
         "tags": [
           "login"
         ],
@@ -18527,8 +18527,8 @@
     "/login/authorize/{track_id}": {
       "get": {
         "operationId": "get_login_authorize_track_id",
-        "summary": "Example request :",
-        "description": "Example request :\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
+        "summary": "Get login authorize",
+        "description": "Get login authorize\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
         "tags": [
           "login"
         ],
@@ -18628,8 +18628,8 @@
     "/login/logout/": {
       "post": {
         "operationId": "post_login_logout",
-        "summary": "Example request :",
-        "description": "Example request :\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
+        "summary": "POST /login/logout/",
+        "description": "POST /login/logout/\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
         "tags": [
           "login"
         ],
@@ -18703,8 +18703,8 @@
     "/login/session/": {
       "post": {
         "operationId": "post_login_session",
-        "summary": "Example request :",
-        "description": "Example request :\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
+        "summary": "POST /login/session/",
+        "description": "POST /login/session/\n\nError codes: `auth_required`, `invalid_token`, `pending_token`, `insufficient_rights`, `denied_from_external_ip`, `invalid_request`, `ratelimited`, `new_apps_denied`, `apps_denied`, `internal_error`",
         "tags": [
           "login"
         ],
@@ -18924,8 +18924,8 @@
     "/fw/incoming/": {
       "get": {
         "operationId": "get_fw_incoming",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
+        "summary": "List fw incoming",
+        "description": "Returns a list of `IncomingPortConfig`.\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
         "tags": [
           "nat"
         ],
@@ -19131,8 +19131,8 @@
     "/fw/redir/": {
       "get": {
         "operationId": "get_fw_redir",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
+        "summary": "List fw redir",
+        "description": "Returns a list of `PortForwardingConfig`.\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
         "tags": [
           "nat"
         ],
@@ -20639,8 +20639,8 @@
     "/pvr/finished/": {
       "get": {
         "operationId": "get_pvr_finished",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "List pvr finished",
+        "description": "Returns a list of `Frecord`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -21242,8 +21242,8 @@
     "/pvr/media/": {
       "get": {
         "operationId": "get_pvr_media",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "List pvr media",
+        "description": "Returns a list of `Media`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -21387,8 +21387,8 @@
     "/pvr/programmed/": {
       "get": {
         "operationId": "get_pvr_programmed",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "List pvr programmed",
+        "description": "Returns a list of `Precord`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -22140,8 +22140,8 @@
     "/pvr/quota/": {
       "get": {
         "operationId": "get_pvr_quota",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "Get pvr quota",
+        "description": "Returns `PvrQuota`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -22486,8 +22486,8 @@
       },
       "post": {
         "operationId": "post_rrd",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.",
+        "summary": "POST /rrd/",
+        "description": "POST /rrd/\n\nRequires the `settings` permission.",
         "tags": [
           "rrd"
         ],
@@ -24022,8 +24022,8 @@
     "/upload/": {
       "get": {
         "operationId": "get_upload",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `explorer` permission.\n\nError codes: `invalid_request`, `path_not_found`, `access_denied`, `destination_conflict`, `invalid_id`, `cancelled`",
+        "summary": "List upload",
+        "description": "Returns a list of `FileUpload`.\n\nRequires the `explorer` permission.\n\nError codes: `invalid_request`, `path_not_found`, `access_denied`, `destination_conflict`, `invalid_id`, `cancelled`",
         "tags": [
           "upload"
         ],
@@ -26324,8 +26324,8 @@
     "/vpn_client/log": {
       "get": {
         "operationId": "get_vpn_client_log",
-        "summary": "Example request :",
-        "description": "Example request :\n\nRequires the `settings` permission.\n\nError codes: `inval`, `nomem`, `ioerror`, `nodev`, `noent`, `netdown`, `exist`, `busy`, `none`, `internal`, `authentication_failed`, `auth_failed`, `resolv_failed`, `connect_timeout`, `connect_failed`, `setup_control_failed`, `setup_call_failed`, `protocol`, `remote_terminated`, `remote_disconnect`",
+        "summary": "Get vpn client log",
+        "description": "Get vpn client log\n\nRequires the `settings` permission.\n\nError codes: `inval`, `nomem`, `ioerror`, `nodev`, `noent`, `netdown`, `exist`, `busy`, `none`, `internal`, `authentication_failed`, `auth_failed`, `resolv_failed`, `connect_timeout`, `connect_failed`, `setup_control_failed`, `setup_call_failed`, `protocol`, `remote_terminated`, `remote_disconnect`",
         "tags": [
           "vpn_client"
         ],

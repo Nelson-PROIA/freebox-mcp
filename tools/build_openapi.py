@@ -183,6 +183,29 @@ def result_schema(op: dict, aliases: dict[str, str], known: set[str], ov: dict) 
     return {"description": "Result payload (schema not documented)."}
 
 
+def _resource_words(path: str) -> str:
+    segs = [s for s in path.strip("/").split("/") if s and not s.startswith("{")]
+    return " ".join(segs).replace("_", " ").strip()
+
+
+def synth_summary(op: dict, kind: str | None, ref: str | None) -> str:
+    """A readable summary when the docs gave no prose (avoids 'Example request :')."""
+    method = op["method"].upper()
+    resource = _resource_words(op["path"]) or op["path"].strip("/")
+    if method == "GET":
+        lead = "List" if kind == "array" else "Get"
+        return f"{lead} {resource}".strip()
+    # Don't guess create/update/delete semantics for non-GET (Freebox uses POST for
+    # queries too, e.g. rrd) — name the resource unambiguously instead.
+    return f"{method} /{op['path'].strip('/')}/".replace("//", "/")
+
+
+def synth_description(op: dict, kind: str | None, ref: str | None) -> str:
+    if op["method"] == "get" and ref:
+        return f"Returns {'a list of ' if kind == 'array' else ''}`{ref}`."
+    return ""
+
+
 def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dict) -> dict:
     known = set(ir["schemas"])
     op_ov = overrides.get("operations", {}).get(op["operation_id"], {})
@@ -274,7 +297,12 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
         },
     }
 
-    desc_parts = [op.get("description") or op.get("summary") or ""]
+    res_kind = op_ov.get("response", {}).get("kind", op.get("response_kind"))
+    res_ref = op_ov.get("response", {}).get("ref", op.get("response_object"))
+    summary = op.get("summary") or synth_summary(op, res_kind, res_ref)
+    lead = op.get("description") or synth_description(op, res_kind, res_ref)
+
+    desc_parts = [lead or summary]
     if permission:
         desc_parts.append(f"Requires the `{permission}` permission.")
     err_codes = section.get("error_codes", []) + op_ov.get("error_codes", [])
@@ -283,7 +311,7 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
 
     obj: dict[str, Any] = {
         "operationId": op["operation_id"],
-        "summary": (op.get("summary") or op["operation_id"])[:120],
+        "summary": summary[:120],
         "description": "\n\n".join(p for p in desc_parts if p).strip(),
         "tags": [page],
         "responses": responses,
