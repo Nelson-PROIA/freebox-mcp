@@ -10,6 +10,8 @@
 # Example crontab (Mondays 04:17):
 #   17 4 * * 1  /path/to/freebox-mcp/scripts/regenerate.sh >> ~/freebox-mcp-regen.log 2>&1
 set -euo pipefail
+# cron runs with a minimal PATH; uv installs to ~/.local/bin by default.
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 cd "$(dirname "$0")/.."
 
 git pull --ff-only
