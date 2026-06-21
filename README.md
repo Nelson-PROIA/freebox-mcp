@@ -9,15 +9,21 @@ official Freebox documentation** (<https://dev.freebox.fr/sdk/os/>). When Free s
 version, a weekly job regenerates the spec and ships a release — **no hand-written tool code to
 maintain**.
 
+### Three bricks, one contract
+
 ```
- official docs (Sphinx)
-        │  scrape + parse objects.inv & httpdomain/jsondomain HTML   (deterministic, pure Python)
-        ▼
- spec/freebox-openapi.json  ──►  FastMCP.from_openapi  ──►  ~230 MCP tools
-        ▲                                   ▲
- spec/overrides.json (committed)     authenticated httpx client
- (one-time AI audit, static data)    (discovery · HMAC session · TLS · envelope unwrap)
+  ┌── 1. SCRAPER ──┐   ┌──── 2. GENERATOR ────┐   ┌─── 3. GENERATED CLIENT ───┐
+  official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► ~230 MCP tools
+  (dev.freebox.fr)    (html + objects.inv)      (+ committed overrides.json)   (raw output — no edits)
 ```
+
+**The generated client is the verbatim output of `FastMCP.from_openapi(spec)`** — no tool is
+hand-added, edited, pre-processed, or post-processed. A CI test (`test_tools_are_raw_generated_output`)
+enforces it: every exposed tool must be an `operationId` from the generated spec, or the build fails.
+
+The only hand-written code is the authenticated transport the generated client *runs on*
+(discovery · HMAC session · TLS · envelope unwrap) — things no API spec can express. It is generic,
+never edited per-endpoint, and app registration / login live in the CLI, not as injected tools.
 
 - **Exhaustive** — 220 documented operations across 29 sections (wifi, lan, connection, calls,
   contacts, downloads, fs, nat, dhcp, vpn server + client, pvr, parental control, airmedia,

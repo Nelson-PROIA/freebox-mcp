@@ -1,10 +1,11 @@
-"""The FastMCP server builds from the spec and exposes the right tools."""
+"""The FastMCP server's tools are the raw output of the generator — no hand-adds."""
 
 from __future__ import annotations
 
 import respx
 
 from freebox_mcp.server import create_server
+from freebox_mcp.spec import load_spec
 
 DISCOVERY = {
     "box_model_name": "Freebox Server Test",
@@ -17,21 +18,30 @@ DISCOVERY = {
 }
 
 
+def _spec_operation_ids() -> set[str]:
+    spec = load_spec()
+    return {
+        op["operationId"]
+        for item in spec["paths"].values()
+        for m, op in item.items()
+        if m in ("get", "post", "put", "delete")
+    }
+
+
 @respx.mock
-async def test_server_builds_and_exposes_tools(monkeypatch):
+async def test_tools_are_raw_generated_output(monkeypatch):
     monkeypatch.setenv("FREEBOX_TRANSPORT", "http")
     respx.get("http://mafreebox.freebox.fr/api_version").respond(json=DISCOVERY)
 
     mcp = create_server()
     tools = {t.name for t in await mcp.list_tools()}
 
-    # lifecycle tools present
-    assert {"freebox_status", "freebox_login", "freebox_authorize"} <= tools
-    # representative generated tools present
+    # CONTRACT: every tool is an operationId from the generated spec — nothing
+    # hand-added, edited, or post-processed.
+    assert tools <= _spec_operation_ids(), f"non-generated tools: {tools - _spec_operation_ids()}"
+    # representative generated tools present; auth handshake excluded (transport-handled)
     assert {"get_system", "get_connection", "get_wifi_config"} <= tools
-    # login operations are excluded (handled by lifecycle tools)
-    assert not any(t.startswith("get_login") or t.startswith("post_login") for t in tools)
-    # the full surface is large
+    assert not any(t.startswith(("get_login", "post_login")) for t in tools)
     assert len(tools) > 220
 
 
@@ -44,7 +54,6 @@ async def test_section_include_filter(monkeypatch):
     mcp = create_server()
     tools = {t.name for t in await mcp.list_tools()}
 
-    # only wifi + system generated tools, plus the always-on lifecycle tools
+    assert tools <= _spec_operation_ids()
     assert "get_system" in tools and "get_wifi_config" in tools
     assert "get_connection" not in tools and "get_call_log" not in tools
-    assert {"freebox_status", "freebox_login"} <= tools
