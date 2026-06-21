@@ -1,17 +1,11 @@
 name: Release
 
-# Reusable: called by regenerate.yml after an automatic version bump, and also
-# triggered directly when a human pushes a v* tag. No long-lived secrets are
-# used anywhere — PyPI and GHCR both authenticate via OIDC / GITHUB_TOKEN.
+# Triggered by a v* tag — pushed either by the regeneration cron on a
+# France-reachable host (scripts/regenerate.sh) or by a human. No long-lived
+# secrets are used anywhere — PyPI and GHCR both authenticate via OIDC / GITHUB_TOKEN.
 on:
   push:
     tags: ["v*"]
-  workflow_call:
-    inputs:
-      ref:
-        description: Git ref (tag) to build and release
-        required: false
-        type: string
 
 permissions:
   contents: read
@@ -30,7 +24,7 @@ jobs:
           egress-policy: audit
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
-          ref: ${{ inputs.ref || github.ref }}
+          ref: ${{ github.ref }}
           persist-credentials: false
       - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
@@ -82,7 +76,7 @@ jobs:
           egress-policy: audit
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
-          ref: ${{ inputs.ref || github.ref }}
+          ref: ${{ github.ref }}
           persist-credentials: false
       - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
       # docker-container driver is required for provenance/sbom attestations.
@@ -139,6 +133,6 @@ jobs:
           path: dist/
       - uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3.0.1
         with:
-          tag_name: ${{ inputs.ref || github.ref_name }}
+          tag_name: ${{ github.ref_name }}
           generate_release_notes: true
           files: dist/*

@@ -24,14 +24,18 @@ always rebuild and commit `spec/` + `tools/cache/` together.
 
 ## Changing the spec
 
-Everything is deterministic — there is no AI and no per-endpoint hand data.
+The scrape + generate are a pure, generic, deterministic transform — no AI, no per-endpoint or
+per-section data, no patching the output.
 
-- Parser/structure fixes go in `tools/parse.py`.
-- Facts the docs don't encode machine-readably (the section→permission map; response-binding
-  heuristics) live as small deterministic config/logic in `tools/build_openapi.py` / `tools/parse.py`.
-  Endpoints the docs genuinely don't specify keep an untyped result — that's honest, not a TODO.
+- If the output is wrong because we extract the docs badly, fix the **scrape** (`tools/parse.py` /
+  `tools/scrape.py`) so it faithfully reflects what Free documents.
+- If we scraped faithfully and it's still imperfect (a result type Free never documents, a
+  malformed field), that's Free's docs — **leave it**. It stays generic/untyped and self-corrects
+  if Free fixes the docs. Don't add maps, aliases, or heuristics to paper over it.
 
 ## Releases
 
-Releases are automatic (weekly regenerate → bump → tag → publish). To cut one manually, push a
-`vX.Y.Z` tag; the `release` workflow publishes to PyPI (OIDC), GHCR (signed), and GitHub Releases.
+The scrape runs on a France-reachable host (a Pi cron, `scripts/regenerate.sh`) because
+`dev.freebox.fr` blocks GitHub-hosted runners; on a spec change it tags + pushes, and the `release`
+workflow (tag-triggered) publishes to PyPI (OIDC), GHCR (signed), and GitHub Releases. To cut one
+manually, push a `vX.Y.Z` tag.

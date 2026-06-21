@@ -6,14 +6,14 @@ A **spec-driven** [Model Context Protocol](https://modelcontextprotocol.io) serv
 
 Every tool is generated from an **OpenAPI 3.1** document that is itself **auto-generated from the
 official Freebox documentation** (<https://dev.freebox.fr/sdk/os/>). When Free ships a new API
-version, a weekly job regenerates the spec and ships a release — **no hand-written tool code to
-maintain**.
+version, a scheduled job on a France-reachable host regenerates the spec; on a change it ships a
+release automatically — **no hand-written tool code to maintain**.
 
 ### Three bricks, one contract
 
 ```
   ┌── 1. SCRAPER ──┐   ┌──── 2. GENERATOR ────┐   ┌─── 3. GENERATED CLIENT ───┐
-  official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► 227 MCP tools
+  official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► MCP tools
   (dev.freebox.fr)    (html + objects.inv)      (pure Python — no AI)          (raw output — no edits)
 ```
 
@@ -27,11 +27,12 @@ The only hand-written code is the authenticated transport the generated client *
 (discovery · HMAC session · TLS · envelope unwrap) — things no API spec can express. It is generic,
 never edited per-endpoint, and app registration / login live in the CLI, not as injected tools.
 
-- **Exhaustive** — 220 documented operations across 29 sections (wifi, lan, connection, calls,
+- **Exhaustive** — every documented operation across every section (wifi, lan, connection, calls,
   contacts, downloads, fs, nat, dhcp, vpn server + client, pvr, parental control, airmedia,
-  system, …) ⇒ 227 MCP tools (the full API; `login` is auth, not a tool).
-- **Self-maintaining** — the spec regenerates from the docs deterministically; CI does it weekly
-  and auto-releases on change.
+  system, …) becomes a tool. `login` (auth handshake) and `/ws/` (WebSocket) are excluded. Run
+  `freebox-mcp sections` for the live list and counts.
+- **Self-maintaining** — regeneration runs on a France-reachable host (GitHub-hosted runners can't
+  reach `dev.freebox.fr`); on a doc change it auto-releases. See *Regenerating the spec* below.
 - **Secure** — app-token never leaves your machine, HMAC-SHA1 sessions, TLS verified against the
   bundled Freebox root CAs, `0600` credential store. See [SECURITY.md](SECURITY.md).
 
@@ -122,8 +123,10 @@ python -m tools.build            # scrape live docs → parse → emit spec/free
 python -m tools.build --offline  # rebuild from the committed cache (deterministic; what CI verifies)
 ```
 
-The CI `regenerate` workflow runs this weekly; on any spec change it bumps the version, commits,
-tags, and releases automatically.
+`dev.freebox.fr` blocks GitHub-hosted runner IPs, so the scrape runs on a **France-reachable host**
+— e.g. a weekly cron on an always-on Raspberry Pi (`scripts/regenerate.sh`). On a spec change it
+bumps the version, tags, and pushes; the GitHub **release** pipeline (which needs no access to the
+docs host) then publishes PyPI + signed GHCR + GitHub Release automatically.
 
 ## Development
 
