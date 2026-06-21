@@ -1,0 +1,42 @@
+{
+  "slug": "login",
+  "operations": [
+    {
+      "operation_id": "get_login",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": null,
+      "parameters": []
+    },
+    {
+      "operation_id": "post_login_authorize",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "object", "ref": "TokenRequest"},
+      "permission": null,
+      "parameters": []
+    },
+    {
+      "operation_id": "get_login_authorize_track_id",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": null,
+      "parameters": [
+        {"name": "track_id", "in": "path", "type": "integer", "required": true, "description": "The track_id returned by the authorize request, used to monitor the app_token authorization status."}
+      ]
+    },
+    {
+      "operation_id": "post_login_logout",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": null,
+      "parameters": []
+    },
+    {
+      "operation_id": "post_login_session",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "object", "ref": "SessionStart"},
+      "permission": null,
+      "parameters": []
+    }
+  ]
+}

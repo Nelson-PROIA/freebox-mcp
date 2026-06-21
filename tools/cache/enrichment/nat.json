@@ -1,0 +1,85 @@
+{
+  "slug": "nat",
+  "operations": [
+    {
+      "operation_id": "get_fw_dmz",
+      "response": {"kind": "object", "ref": "DmzConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_fw_dmz",
+      "response": {"kind": "object", "ref": "DmzConfig"},
+      "request": {"kind": "object", "ref": "DmzConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_fw_incoming",
+      "response": {"kind": "array", "ref": "IncomingPortConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_fw_incoming_port_id",
+      "response": {"kind": "object", "ref": "IncomingPortConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "port_id", "in": "path", "type": "string", "required": true, "description": "Id of the incoming port to retrieve (e.g. http, bittorrent-main)"}
+      ]
+    },
+    {
+      "operation_id": "put_fw_incoming_port_id",
+      "response": {"kind": "object", "ref": "IncomingPortConfig"},
+      "request": {"kind": "object", "ref": "IncomingPortConfig"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "port_id", "in": "path", "type": "string", "required": true, "description": "Id of the incoming port to update (e.g. http, bittorrent-main)"}
+      ]
+    },
+    {
+      "operation_id": "get_fw_redir",
+      "response": {"kind": "array", "ref": "PortForwardingConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fw_redir",
+      "response": {"kind": "object", "ref": "PortForwardingConfig"},
+      "request": {"kind": "object", "ref": "PortForwardingConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_fw_redir_redir_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "redir_id", "in": "path", "type": "integer", "required": true, "description": "Id of the port forwarding rule to delete"}
+      ]
+    },
+    {
+      "operation_id": "get_fw_redir_redir_id",
+      "response": {"kind": "object", "ref": "PortForwardingConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "redir_id", "in": "path", "type": "integer", "required": true, "description": "Id of the port forwarding rule to retrieve"}
+      ]
+    },
+    {
+      "operation_id": "put_fw_redir_redir_id",
+      "response": {"kind": "object", "ref": "PortForwardingConfig"},
+      "request": {"kind": "object", "ref": "PortForwardingConfig"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "redir_id", "in": "path", "type": "integer", "required": true, "description": "Id of the port forwarding rule to update"}
+      ]
+    }
+  ]
+}

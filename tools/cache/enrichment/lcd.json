@@ -1,0 +1,19 @@
+{
+  "slug": "lcd",
+  "operations": [
+    {
+      "operation_id": "get_lcd_config",
+      "response": {"kind": "object", "ref": "LcdConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_lcd_config",
+      "response": {"kind": "object", "ref": "LcdConfig"},
+      "request": {"kind": "object", "ref": "LcdConfig"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

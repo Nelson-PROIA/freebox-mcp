@@ -1,0 +1,53 @@
+{
+  "slug": "upload",
+  "operations": [
+    {
+      "operation_id": "get_upload",
+      "response": {"kind": "array", "ref": "FileUpload"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_upload_clean",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_upload_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the FileUpload to delete (closing the connection if needed)"}
+      ]
+    },
+    {
+      "operation_id": "get_upload_id",
+      "response": {"kind": "object", "ref": "FileUpload"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the FileUpload whose progress to track"}
+      ]
+    },
+    {
+      "operation_id": "delete_upload_id_cancel",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the in_progress FileUpload to cancel (closing the connection)"}
+      ]
+    },
+    {
+      "operation_id": "get_ws_upload",
+      "response": {"kind": "object", "ref": "FileUploadChunkResponse"},
+      "request": {"kind": "object", "ref": "FileUploadStartAction"},
+      "permission": "explorer",
+      "parameters": []
+    }
+  ]
+}

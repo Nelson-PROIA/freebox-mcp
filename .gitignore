@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# uv: uv.lock IS committed for reproducible, audited builds.
+
+# Local Freebox app credentials (NEVER commit — this is your app_token)
+.freebox-credentials.json
+freebox-credentials.json
+
+# Scraper keeps raw HTML + objects.inv committed for reproducible builds.
+# These are regenerable render/scratch intermediates — not committed:
+tools/cache/*.tmp
+tools/cache/_wf_args.json
+tools/cache/sections/
+

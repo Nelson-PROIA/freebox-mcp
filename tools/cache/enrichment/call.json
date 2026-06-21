@@ -1,0 +1,53 @@
+{
+  "slug": "call",
+  "operations": [
+    {
+      "operation_id": "get_call_log",
+      "response": {"kind": "array", "ref": "CallEntry"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "calls",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_call_log_delete_all",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "calls",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_call_log_mark_all_as_read",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "calls",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_call_log_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "calls",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the CallEntry to delete."}
+      ]
+    },
+    {
+      "operation_id": "get_call_log_id",
+      "response": {"kind": "object", "ref": "CallEntry"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "calls",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the CallEntry to retrieve."}
+      ]
+    },
+    {
+      "operation_id": "put_call_log_id",
+      "response": {"kind": "object", "ref": "CallEntry"},
+      "request": {"kind": "object", "ref": "CallEntry"},
+      "permission": "calls",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the CallEntry to update."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "slug": "fs",
+  "operations": [
+    {
+      "operation_id": "get_dl_path",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "path", "in": "path", "type": "string", "required": true, "description": "Base64-encoded path of the file to download; returns the raw file contents."}
+      ]
+    },
+    {
+      "operation_id": "post_fs_archive",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_cat",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_cp",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_extract",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_hash",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_fs_info_path",
+      "response": {"kind": "object", "ref": "FileInfo"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "path", "in": "path", "type": "string", "required": true, "description": "Base64-encoded path of the file or folder to get FileInfo for."}
+      ]
+    },
+    {
+      "operation_id": "get_fs_ls_path",
+      "response": {"kind": "array", "ref": "FileInfo"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "path", "in": "path", "type": "string", "required": true, "description": "Base64-encoded path of the directory to list."},
+        {"name": "onlyFolder", "in": "query", "type": "boolean", "required": false, "description": "Only list folders."},
+        {"name": "countSubFolder", "in": "query", "type": "boolean", "required": false, "description": "Return files and subfolder count for folders."},
+        {"name": "removeHidden", "in": "query", "type": "boolean", "required": false, "description": "Don't return hidden files in directory listing."}
+      ]
+    },
+    {
+      "operation_id": "post_fs_mkdir",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_mv",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_rename",
+      "response": {"kind": "primitive", "ref": null},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_repair",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_fs_rm",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_fs_tasks",
+      "response": {"kind": "array", "ref": "FsTask"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_fs_tasks_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the FsTask task to delete (stops it if running)."}
+      ]
+    },
+    {
+      "operation_id": "get_fs_tasks_id",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the FsTask task to retrieve."}
+      ]
+    },
+    {
+      "operation_id": "put_fs_tasks_id",
+      "response": {"kind": "object", "ref": "FsTask"},
+      "request": {"kind": "object", "ref": "FsTask"},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the FsTask task to update (e.g. to change its state)."}
+      ]
+    },
+    {
+      "operation_id": "get_fs_tasks_id_hash",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "Id of the completed hash FsTask whose computed hash value is returned."}
+      ]
+    }
+  ]
+}

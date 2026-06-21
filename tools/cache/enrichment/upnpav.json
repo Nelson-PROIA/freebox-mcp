@@ -1,0 +1,19 @@
+{
+  "slug": "upnpav",
+  "operations": [
+    {
+      "operation_id": "get_upnpav_config",
+      "response": {"kind": "object", "ref": "UPnPAVConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_upnpav_config",
+      "response": {"kind": "object", "ref": "UPnPAVConfig"},
+      "request": {"kind": "object", "ref": "UPnPAVConfig"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

@@ -1,0 +1,3486 @@
+{
+  "_comment": "Generated once by the AI audit (tools/merge_overrides + the audit workflow) and committed as static data. The deterministic build merges this; CI never runs AI.",
+  "_source": "tools/cache/enrichment/*.json",
+  "aliases": {
+    "VPNClientConfigPPTP": "VPNClientConfig"
+  },
+  "operations": {
+    "get_airmedia_config": {
+      "response": {
+        "kind": "object",
+        "ref": "AirMediaConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_airmedia_config": {
+      "response": {
+        "kind": "object",
+        "ref": "AirMediaConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "AirMediaConfig"
+      },
+      "permission": "settings"
+    },
+    "get_airmedia_receivers": {
+      "response": {
+        "kind": "array",
+        "ref": "AirMediaReceiver"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_airmedia_receviers_receiver_name": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "AirMediaReceiverRequest"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "receiver_name",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the AirMedia receiver to send the media request to"
+        }
+      ]
+    },
+    "get_call_log": {
+      "response": {
+        "kind": "array",
+        "ref": "CallEntry"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "calls"
+    },
+    "post_call_log_delete_all": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "calls"
+    },
+    "post_call_log_mark_all_as_read": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "calls"
+    },
+    "delete_call_log_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "calls",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the CallEntry to delete."
+        }
+      ]
+    },
+    "get_call_log_id": {
+      "response": {
+        "kind": "object",
+        "ref": "CallEntry"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "calls",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the CallEntry to retrieve."
+        }
+      ]
+    },
+    "put_call_log_id": {
+      "response": {
+        "kind": "object",
+        "ref": "CallEntry"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "CallEntry"
+      },
+      "permission": "calls",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the CallEntry to update."
+        }
+      ]
+    },
+    "get_connection": {
+      "response": {
+        "kind": "object",
+        "ref": "ConnectionStatus"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_connection_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ConnectionConfiguration"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_connection_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ConnectionConfiguration"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ConnectionConfiguration"
+      },
+      "permission": "settings"
+    },
+    "get_connection_ddns_provider": {
+      "response": {
+        "kind": "object",
+        "ref": "DDNSConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "provider",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+        }
+      ]
+    },
+    "put_connection_ddns_provider": {
+      "response": {
+        "kind": "object",
+        "ref": "DDNSConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DDNSConfig"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "provider",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+        }
+      ]
+    },
+    "get_connection_ddns_provider_status": {
+      "response": {
+        "kind": "object",
+        "ref": "DDNSStatus"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "provider",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+        }
+      ]
+    },
+    "get_connection_ftth": {
+      "response": {
+        "kind": "object",
+        "ref": "FtthStatus"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_connection_ipv6_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ConnectionIpv6Configuration"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_connection_ipv6_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ConnectionIpv6Configuration"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ConnectionIpv6Configuration"
+      },
+      "permission": "settings"
+    },
+    "get_connection_xdsl": {
+      "response": {
+        "kind": "object",
+        "ref": "XdslInfos"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_number_address_url_email": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactNumber"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ContactNumber"
+      },
+      "permission": "contacts"
+    },
+    "delete_number_address_url_email_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the contact number/address/url/email to delete"
+        }
+      ]
+    },
+    "get_number_address_url_email_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactNumber"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the contact number/address/url/email to return"
+        }
+      ]
+    },
+    "put_number_address_url_email_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactNumber"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ContactNumber"
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the contact number/address/url/email to update"
+        }
+      ]
+    },
+    "get_contact": {
+      "response": {
+        "kind": "array",
+        "ref": "ContactEntry"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "start",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "offset of the first contact to return"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "limit of contacts to return (-1 means no limit)"
+        },
+        {
+          "name": "group_id",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "return only the contacts that belong to this group"
+        }
+      ]
+    },
+    "post_contact": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactEntry"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ContactEntry"
+      },
+      "permission": "contacts"
+    },
+    "get_contact_contact_id_numbers_addresses_urls_emails": {
+      "response": {
+        "kind": "array",
+        "ref": "ContactNumber"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "contact_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the contact whose numbers/addresses/urls/emails are returned"
+        }
+      ]
+    },
+    "delete_contact_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ContactEntry to delete"
+        }
+      ]
+    },
+    "get_contact_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactEntry"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ContactEntry to return"
+        }
+      ]
+    },
+    "put_contact_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ContactEntry"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ContactEntry"
+      },
+      "permission": "contacts",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ContactEntry to update"
+        }
+      ]
+    },
+    "get_dhcp_config": {
+      "response": {
+        "kind": "object",
+        "ref": "DhcpConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_dhcp_config": {
+      "response": {
+        "kind": "object",
+        "ref": "DhcpConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DhcpConfig"
+      },
+      "permission": "settings"
+    },
+    "get_dhcp_dynamic_lease": {
+      "response": {
+        "kind": "array",
+        "ref": "DhcpDynamicLease"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_dhcp_static_lease": {
+      "response": {
+        "kind": "array",
+        "ref": "DhcpStaticLease"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_dhcp_static_lease": {
+      "response": {
+        "kind": "object",
+        "ref": "DhcpStaticLease"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DhcpStaticLease"
+      },
+      "permission": "settings"
+    },
+    "delete_dhcp_static_lease_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DHCP static lease object id (the host mac address)"
+        }
+      ]
+    },
+    "get_dhcp_static_lease_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DhcpStaticLease"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DHCP static lease object id (the host mac address)"
+        }
+      ]
+    },
+    "put_dhcp_static_lease_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DhcpStaticLease"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DhcpStaticLease"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "DHCP static lease object id (the host mac address)"
+        }
+      ]
+    },
+    "get_downloads": {
+      "response": {
+        "kind": "array",
+        "ref": "Download"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "post_downloads_add": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "post_downloads_blacklist": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadBlacklistEntry"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "delete_downloads_blacklist_host": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "host",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "IP of the blacklist entry to delete"
+        }
+      ]
+    },
+    "get_downloads_stats": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadStats"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "delete_downloads_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Download task to delete (without erasing files)"
+        }
+      ]
+    },
+    "get_downloads_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Download"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Download task to retrieve"
+        }
+      ]
+    },
+    "put_downloads_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Download"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "Download"
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Download task to update"
+        }
+      ]
+    },
+    "delete_downloads_id_erase": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Download task to delete and erase its downloaded files"
+        }
+      ]
+    },
+    "get_downloads_id_log": {
+      "response": {
+        "kind": "primitive",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Download task whose log to retrieve"
+        }
+      ]
+    },
+    "get_downloads_task_id_blacklist": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadBlacklistEntry"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task whose blacklist entries to list"
+        }
+      ]
+    },
+    "delete_downloads_task_id_blacklist_empty": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task whose blacklist to empty (also removes global entries)"
+        }
+      ]
+    },
+    "get_downloads_task_id_files": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadFile"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task whose files to list"
+        }
+      ]
+    },
+    "put_downloads_task_id_files_file_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task"
+        },
+        {
+          "name": "file_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "id of the download file whose priority to change"
+        }
+      ]
+    },
+    "get_downloads_task_id_peers": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadPeer"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the bittorrent download task whose peers to list"
+        }
+      ]
+    },
+    "get_downloads_task_id_pieces": {
+      "response": {
+        "kind": "primitive",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task whose piece status string to retrieve"
+        }
+      ]
+    },
+    "get_downloads_task_id_trackers": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadTracker"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the bittorrent download task whose trackers to list"
+        }
+      ]
+    },
+    "post_downloads_task_id_trackers": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the bittorrent download task to add a tracker to"
+        }
+      ]
+    },
+    "delete_downloads_task_id_trackers_announce": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task"
+        },
+        {
+          "name": "announce",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "announce URL of the tracker to remove"
+        }
+      ]
+    },
+    "put_downloads_task_id_trackers_announce": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the download task"
+        },
+        {
+          "name": "announce",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "announce URL of the tracker to update"
+        }
+      ]
+    },
+    "get_downloads_config": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadConfiguration"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "put_downloads_config": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadConfiguration"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DownloadConfiguration"
+      },
+      "permission": "downloader"
+    },
+    "put_downloads_throttling": {
+      "response": {
+        "kind": "object",
+        "ref": "DlThrottlingConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DlThrottlingConfig"
+      },
+      "permission": "downloader"
+    },
+    "get_downloads_feeds": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadFeed"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "post_downloads_feeds": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadFeed"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DownloadFeed"
+      },
+      "permission": "downloader"
+    },
+    "post_downloads_feeds_fetch": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader"
+    },
+    "get_downloads_feeds_feed_id_items": {
+      "response": {
+        "kind": "array",
+        "ref": "DownloadFeedItem"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "feed_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed whose items are returned"
+        }
+      ]
+    },
+    "post_downloads_feeds_feed_id_items_mark_all_as_read": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "feed_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed whose items are marked as read"
+        }
+      ]
+    },
+    "put_downloads_feeds_feed_id_items_item_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DownloadFeedItem"
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "feed_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed containing the item"
+        },
+        {
+          "name": "item_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeedItem to update"
+        }
+      ]
+    },
+    "post_downloads_feeds_feed_id_items_item_id_download": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "feed_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed containing the item"
+        },
+        {
+          "name": "item_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeedItem to enqueue for download"
+        }
+      ]
+    },
+    "delete_downloads_feeds_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed to delete"
+        }
+      ]
+    },
+    "get_downloads_feeds_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadFeed"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed to retrieve"
+        }
+      ]
+    },
+    "put_downloads_feeds_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DownloadFeed"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DownloadFeed"
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed to update"
+        }
+      ]
+    },
+    "post_downloads_feeds_id_fetch": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "downloader",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the DownloadFeed to remotely refresh"
+        }
+      ]
+    },
+    "get_freeplug": {
+      "response": {
+        "kind": "array",
+        "ref": "FreeplugNetwork"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_freeplug_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Freeplug"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Freeplug unique id of the freeplug to retrieve"
+        }
+      ]
+    },
+    "post_freeplug_id_reset": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Freeplug unique id of the freeplug to reset"
+        }
+      ]
+    },
+    "get_dl_path": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base64-encoded path of the file to download; returns the raw file contents."
+        }
+      ]
+    },
+    "post_fs_archive": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_cat": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_cp": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_extract": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_hash": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "get_fs_info_path": {
+      "response": {
+        "kind": "object",
+        "ref": "FileInfo"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base64-encoded path of the file or folder to get FileInfo for."
+        }
+      ]
+    },
+    "get_fs_ls_path": {
+      "response": {
+        "kind": "array",
+        "ref": "FileInfo"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base64-encoded path of the directory to list."
+        },
+        {
+          "name": "onlyFolder",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Only list folders."
+        },
+        {
+          "name": "countSubFolder",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Return files and subfolder count for folders."
+        },
+        {
+          "name": "removeHidden",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Don't return hidden files in directory listing."
+        }
+      ]
+    },
+    "post_fs_mkdir": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_mv": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_rename": {
+      "response": {
+        "kind": "primitive",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_repair": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_fs_rm": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "get_fs_tasks": {
+      "response": {
+        "kind": "array",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "delete_fs_tasks_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the FsTask task to delete (stops it if running)."
+        }
+      ]
+    },
+    "get_fs_tasks_id": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the FsTask task to retrieve."
+        }
+      ]
+    },
+    "put_fs_tasks_id": {
+      "response": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "FsTask"
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the FsTask task to update (e.g. to change its state)."
+        }
+      ]
+    },
+    "get_fs_tasks_id_hash": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the completed hash FsTask whose computed hash value is returned."
+        }
+      ]
+    },
+    "get_ftp_config": {
+      "response": {
+        "kind": "object",
+        "ref": "FtpConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_ftp_config": {
+      "response": {
+        "kind": "object",
+        "ref": "FtpConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "FtpConfig"
+      },
+      "permission": "settings"
+    },
+    "get_upnpigd_config": {
+      "response": {
+        "kind": "object",
+        "ref": "UPnPIGDConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_upnpigd_config": {
+      "response": {
+        "kind": "object",
+        "ref": "UPnPIGDConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "UPnPIGDConfig"
+      },
+      "permission": "settings"
+    },
+    "get_upnpigd_redir": {
+      "response": {
+        "kind": "array",
+        "ref": "UPnPRedir"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "delete_upnpigd_redir_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "the id of the UPnPRedir redirection to delete"
+        }
+      ]
+    },
+    "get_lan_browser_interfaces": {
+      "response": {
+        "kind": "array",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_lan_browser_interface": {
+      "response": {
+        "kind": "array",
+        "ref": "LanHost"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "interface",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the LAN browser interface to list hosts on"
+        }
+      ]
+    },
+    "get_lan_browser_interface_hostid": {
+      "response": {
+        "kind": "object",
+        "ref": "LanHost"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "interface",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the LAN browser interface the host is on"
+        },
+        {
+          "name": "hostid",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the host whose properties are requested"
+        }
+      ]
+    },
+    "put_lan_browser_interface_hostid": {
+      "response": {
+        "kind": "object",
+        "ref": "LanHost"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "LanHost"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "interface",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the LAN browser interface the host is on"
+        },
+        {
+          "name": "hostid",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the host whose properties are updated"
+        }
+      ]
+    },
+    "get_lan_config": {
+      "response": {
+        "kind": "object",
+        "ref": "LanConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_lan_config": {
+      "response": {
+        "kind": "object",
+        "ref": "LanConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "LanConfig"
+      },
+      "permission": "settings"
+    },
+    "post_lan_wol_interface": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "interface",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the LAN browser interface the target host is on"
+        }
+      ]
+    },
+    "get_lcd_config": {
+      "response": {
+        "kind": "object",
+        "ref": "LcdConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_lcd_config": {
+      "response": {
+        "kind": "object",
+        "ref": "LcdConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "LcdConfig"
+      },
+      "permission": "settings"
+    },
+    "get_login": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      }
+    },
+    "post_login_authorize": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "TokenRequest"
+      }
+    },
+    "get_login_authorize_track_id": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "parameters": [
+        {
+          "name": "track_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "The track_id returned by the authorize request, used to monitor the app_token authorization status."
+        }
+      ]
+    },
+    "post_login_logout": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      }
+    },
+    "post_login_session": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "SessionStart"
+      }
+    },
+    "get_fw_dmz": {
+      "response": {
+        "kind": "object",
+        "ref": "DmzConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_fw_dmz": {
+      "response": {
+        "kind": "object",
+        "ref": "DmzConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DmzConfig"
+      },
+      "permission": "settings"
+    },
+    "get_fw_incoming": {
+      "response": {
+        "kind": "array",
+        "ref": "IncomingPortConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_fw_incoming_port_id": {
+      "response": {
+        "kind": "object",
+        "ref": "IncomingPortConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "port_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the incoming port to retrieve (e.g. http, bittorrent-main)"
+        }
+      ]
+    },
+    "put_fw_incoming_port_id": {
+      "response": {
+        "kind": "object",
+        "ref": "IncomingPortConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "IncomingPortConfig"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "port_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the incoming port to update (e.g. http, bittorrent-main)"
+        }
+      ]
+    },
+    "get_fw_redir": {
+      "response": {
+        "kind": "array",
+        "ref": "PortForwardingConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_fw_redir": {
+      "response": {
+        "kind": "object",
+        "ref": "PortForwardingConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "PortForwardingConfig"
+      },
+      "permission": "settings"
+    },
+    "delete_fw_redir_redir_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "redir_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the port forwarding rule to delete"
+        }
+      ]
+    },
+    "get_fw_redir_redir_id": {
+      "response": {
+        "kind": "object",
+        "ref": "PortForwardingConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "redir_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the port forwarding rule to retrieve"
+        }
+      ]
+    },
+    "put_fw_redir_redir_id": {
+      "response": {
+        "kind": "object",
+        "ref": "PortForwardingConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "PortForwardingConfig"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "redir_id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the port forwarding rule to update"
+        }
+      ]
+    },
+    "get_netshare_afp": {
+      "response": {
+        "kind": "object",
+        "ref": "AfpConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_netshare_afp": {
+      "response": {
+        "kind": "object",
+        "ref": "AfpConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "AfpConfig"
+      },
+      "permission": "settings"
+    },
+    "get_netshare_samba": {
+      "response": {
+        "kind": "object",
+        "ref": "SambaConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_netshare_samba": {
+      "response": {
+        "kind": "object",
+        "ref": "SambaConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "SambaConfig"
+      },
+      "permission": "settings"
+    },
+    "get_parental_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilterConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "parental"
+    },
+    "put_parental_config": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilterConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ParentalFilterConfig"
+      },
+      "permission": "parental"
+    },
+    "get_parental_filter": {
+      "response": {
+        "kind": "array",
+        "ref": "ParentalFilter"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "parental"
+    },
+    "post_parental_filter": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilter"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ParentalFilter"
+      },
+      "permission": "parental"
+    },
+    "delete_parental_filter_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "parental",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ParentalFilter rule to delete"
+        }
+      ]
+    },
+    "get_parental_filter_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilter"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "parental",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ParentalFilter rule to retrieve"
+        }
+      ]
+    },
+    "put_parental_filter_id": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilter"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ParentalFilter"
+      },
+      "permission": "parental",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the ParentalFilter rule to update"
+        }
+      ]
+    },
+    "get_parental_filter_id_planning": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilterPlanning"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "parental",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the parental filter rule whose planning is retrieved"
+        }
+      ]
+    },
+    "put_parental_filter_id_planning": {
+      "response": {
+        "kind": "object",
+        "ref": "ParentalFilterPlanning"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ParentalFilterPlanning"
+      },
+      "permission": "parental",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the parental filter rule whose planning is updated"
+        }
+      ]
+    },
+    "get_pvr_config": {
+      "response": {
+        "kind": "object",
+        "ref": "PvrConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "put_pvr_config": {
+      "response": {
+        "kind": "object",
+        "ref": "PvrConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "PvrConfig"
+      },
+      "permission": "pvr"
+    },
+    "get_pvr_finished": {
+      "response": {
+        "kind": "array",
+        "ref": "Frecord"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "delete_pvr_finished_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Frecord to delete along with its associated files"
+        }
+      ]
+    },
+    "get_pvr_finished_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Frecord"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the requested Frecord"
+        }
+      ]
+    },
+    "put_pvr_finished_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Frecord"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "Frecord"
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Frecord to update"
+        }
+      ]
+    },
+    "get_pvr_media": {
+      "response": {
+        "kind": "array",
+        "ref": "Media"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "get_pvr_programmed": {
+      "response": {
+        "kind": "array",
+        "ref": "Precord"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "post_pvr_programmed": {
+      "response": {
+        "kind": "object",
+        "ref": "Precord"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "Precord"
+      },
+      "permission": "pvr"
+    },
+    "delete_pvr_programmed_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Precord to delete"
+        }
+      ]
+    },
+    "get_pvr_programmed_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Precord"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the requested Precord"
+        }
+      ]
+    },
+    "put_pvr_programmed_id": {
+      "response": {
+        "kind": "object",
+        "ref": "Precord"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "Precord"
+      },
+      "permission": "pvr",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "id of the Precord to update"
+        }
+      ]
+    },
+    "get_pvr_quota": {
+      "response": {
+        "kind": "object",
+        "ref": "PvrQuota"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "put_pvr_quota": {
+      "response": {
+        "kind": "object",
+        "ref": "PvrQuota"
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "pvr"
+    },
+    "get_rrd": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "RRDFetch"
+      }
+    },
+    "post_rrd": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "object",
+        "ref": "RRDFetch"
+      },
+      "permission": "settings"
+    },
+    "get_share_link": {
+      "response": {
+        "kind": "array",
+        "ref": "ShareLink"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "post_share_link": {
+      "response": {
+        "kind": "object",
+        "ref": "ShareLink"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "ShareLink"
+      },
+      "permission": "explorer"
+    },
+    "delete_share_link_token": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "token",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Unique sharing token of the ShareLink to delete"
+        }
+      ]
+    },
+    "get_share_link_token": {
+      "response": {
+        "kind": "object",
+        "ref": "ShareLink"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "token",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Unique sharing token of the ShareLink to retrieve"
+        }
+      ]
+    },
+    "get_storage_config": {
+      "response": {
+        "kind": "object",
+        "ref": "StorageConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_storage_config": {
+      "response": {
+        "kind": "object",
+        "ref": "StorageConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "StorageConfig"
+      },
+      "permission": "settings"
+    },
+    "get_storage_disk": {
+      "response": {
+        "kind": "array",
+        "ref": "StorageDisk"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_storage_disk_id": {
+      "response": {
+        "kind": "object",
+        "ref": "StorageDisk"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the disk id to retrieve"
+        }
+      ]
+    },
+    "put_storage_disk_id": {
+      "response": {
+        "kind": "object",
+        "ref": "StorageDisk"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "StorageDisk"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the disk id to enable/disable"
+        }
+      ]
+    },
+    "put_storage_disk_id_format": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the disk id to format"
+        }
+      ]
+    },
+    "get_storage_partition": {
+      "response": {
+        "kind": "array",
+        "ref": "DiskPartition"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_storage_partition_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DiskPartition"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the partition id to retrieve"
+        }
+      ]
+    },
+    "put_storage_partition_id": {
+      "response": {
+        "kind": "object",
+        "ref": "DiskPartition"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "DiskPartition"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the partition id to enable/disable"
+        }
+      ]
+    },
+    "put_storage_partition_id_check": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "inline",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "the partition id to check"
+        }
+      ]
+    },
+    "get_switch_port_id": {
+      "response": {
+        "kind": "object",
+        "ref": "SwitchPortConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "switch port id to get the configuration for"
+        }
+      ]
+    },
+    "put_switch_port_id": {
+      "response": {
+        "kind": "object",
+        "ref": "SwitchPortConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "SwitchPortConfig"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "switch port id to update the configuration for"
+        }
+      ]
+    },
+    "get_switch_port_id_stats": {
+      "response": {
+        "kind": "object",
+        "ref": "SwitchPortStats"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "switch port id to get the statistics for"
+        }
+      ]
+    },
+    "get_switch_status": {
+      "response": {
+        "kind": "array",
+        "ref": "SwitchPortStatus"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_system": {
+      "response": {
+        "kind": "object",
+        "ref": "SystemConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_system_reboot": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_upload": {
+      "response": {
+        "kind": "array",
+        "ref": "FileUpload"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "delete_upload_clean": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer"
+    },
+    "delete_upload_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the FileUpload to delete (closing the connection if needed)"
+        }
+      ]
+    },
+    "get_upload_id": {
+      "response": {
+        "kind": "object",
+        "ref": "FileUpload"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the FileUpload whose progress to track"
+        }
+      ]
+    },
+    "delete_upload_id_cancel": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "explorer",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "Id of the in_progress FileUpload to cancel (closing the connection)"
+        }
+      ]
+    },
+    "get_ws_upload": {
+      "response": {
+        "kind": "object",
+        "ref": "FileUploadChunkResponse"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "FileUploadStartAction"
+      },
+      "permission": "explorer"
+    },
+    "get_upnpav_config": {
+      "response": {
+        "kind": "object",
+        "ref": "UPnPAVConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_upnpav_config": {
+      "response": {
+        "kind": "object",
+        "ref": "UPnPAVConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "UPnPAVConfig"
+      },
+      "permission": "settings"
+    },
+    "get_vpn": {
+      "response": {
+        "kind": "array",
+        "ref": "VPNServer"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_vpn_connection": {
+      "response": {
+        "kind": "array",
+        "ref": "VPNConnection"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "delete_vpn_connection_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Connection id of the VPN connection to close"
+        }
+      ]
+    },
+    "get_vpn_download_config_server_name_login": {
+      "response": {
+        "kind": "primitive",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "server_name",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name of the OpenVPN server to generate the configuration file for"
+        },
+        {
+          "name": "login",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "VPN user login to generate the configuration file for"
+        }
+      ]
+    },
+    "get_vpn_ip_pool": {
+      "response": {
+        "kind": "object",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_vpn_openvpn_routed_config": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNServerConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "VPNServerConfig"
+      },
+      "permission": "settings"
+    },
+    "get_vpn_user": {
+      "response": {
+        "kind": "array",
+        "ref": "VPNUser"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_vpn_user": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNUser"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "VPNUser"
+      },
+      "permission": "settings"
+    },
+    "delete_vpn_user_login": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "login",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Login of the VPN user to delete"
+        }
+      ]
+    },
+    "get_vpn_user_login": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNUser"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "login",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Login of the VPN user to retrieve"
+        }
+      ]
+    },
+    "put_vpn_user_login": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNUser"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "VPNUser"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "login",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Login of the VPN user to update"
+        }
+      ]
+    },
+    "get_vpn_vpn_id_config": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNServerConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "vpn_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the VPN server to get the configuration for"
+        }
+      ]
+    },
+    "get_vpn_client_config": {
+      "response": {
+        "kind": "array",
+        "ref": "VPNClientConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_vpn_client_config": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNClientConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "VPNClientConfig"
+      },
+      "permission": "settings"
+    },
+    "delete_vpn_client_config_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "VPN client config id to delete"
+        }
+      ]
+    },
+    "get_vpn_client_config_id": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNClientConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "VPN client config id to retrieve"
+        }
+      ]
+    },
+    "put_vpn_client_config_id": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNClientConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "VPNClientConfig"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "VPN client config id to update"
+        }
+      ]
+    },
+    "get_vpn_client_log": {
+      "response": {
+        "kind": "primitive",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_vpn_client_status": {
+      "response": {
+        "kind": "object",
+        "ref": "VPNClientStatus"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_wifi_ap": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiAp"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_wifi_ap_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiAp"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "put_wifi_ap_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiAp"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiAp"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "get_wifi_ap_id_allowed_channel_comb": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiAllowedComb"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "get_wifi_ap_id_channel_usage": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiChannelUsage"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "get_wifi_ap_id_neighbors": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiNeighbor"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "post_wifi_ap_id_neighbors_scan": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "get_wifi_ap_id_stations": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiStation"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true,
+          "description": "wifi access point id"
+        }
+      ]
+    },
+    "get_wifi_bss": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiBss"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_wifi_bss_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiBss"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "bss id (bssid MAC address)"
+        }
+      ]
+    },
+    "put_wifi_bss_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiBss"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiBss"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "bss id (bssid MAC address)"
+        }
+      ]
+    },
+    "get_wifi_config": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiGlobalConfig"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_wifi_config": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiGlobalConfig"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiGlobalConfig"
+      },
+      "permission": "settings"
+    },
+    "post_wifi_config_reset": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "get_wifi_mac_filter": {
+      "response": {
+        "kind": "array",
+        "ref": "WifiMacFilter"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "post_wifi_mac_filter": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiMacFilter"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiMacFilter"
+      },
+      "permission": "settings"
+    },
+    "delete_wifi_mac_filter_filter_id": {
+      "response": {
+        "kind": "none",
+        "ref": null
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "filter_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "mac filter id"
+        }
+      ]
+    },
+    "get_wifi_mac_filter_filter_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiMacFilter"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "filter_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "mac filter id"
+        }
+      ]
+    },
+    "put_wifi_mac_filter_filter_id": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiMacFilter"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiMacFilter"
+      },
+      "permission": "settings",
+      "parameters": [
+        {
+          "name": "filter_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "mac filter id"
+        }
+      ]
+    },
+    "get_wifi_planning": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiPlanning"
+      },
+      "request": {
+        "kind": "none",
+        "ref": null
+      },
+      "permission": "settings"
+    },
+    "put_wifi_planning": {
+      "response": {
+        "kind": "object",
+        "ref": "WifiPlanning"
+      },
+      "request": {
+        "kind": "object",
+        "ref": "WifiPlanning"
+      },
+      "permission": "settings"
+    }
+  }
+}

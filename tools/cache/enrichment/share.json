@@ -1,0 +1,37 @@
+{
+  "slug": "share",
+  "operations": [
+    {
+      "operation_id": "get_share_link",
+      "response": {"kind": "array", "ref": "ShareLink"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_share_link",
+      "response": {"kind": "object", "ref": "ShareLink"},
+      "request": {"kind": "object", "ref": "ShareLink"},
+      "permission": "explorer",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_share_link_token",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "token", "in": "path", "type": "string", "required": true, "description": "Unique sharing token of the ShareLink to delete"}
+      ]
+    },
+    {
+      "operation_id": "get_share_link_token",
+      "response": {"kind": "object", "ref": "ShareLink"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "explorer",
+      "parameters": [
+        {"name": "token", "in": "path", "type": "string", "required": true, "description": "Unique sharing token of the ShareLink to retrieve"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "system",
+  "operations": [
+    {
+      "operation_id": "get_system",
+      "response": {"kind": "object", "ref": "SystemConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_system_reboot",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

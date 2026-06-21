@@ -1,0 +1,61 @@
+[project]
+name = "freebox-mcp"
+version = "0.1.0"
+description = "Spec-driven MCP server for the Freebox OS API, generated from the official documentation."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Nelson Proia" }]
+keywords = ["freebox", "mcp", "model-context-protocol", "openapi", "freebox-os"]
+
+# Runtime deps are intentionally lean: the server only needs to load a JSON
+# OpenAPI document and speak HTTP/MCP. No HTML/parsing libs at runtime.
+dependencies = [
+    "fastmcp>=3.4",
+    "httpx>=0.27",
+]
+
+[project.scripts]
+freebox-mcp = "freebox_mcp.__main__:main"
+
+[project.optional-dependencies]
+# `pip install freebox-mcp[mdns]` enables zeroconf-based discovery as a
+# fallback to the default HTTP discovery via http://mafreebox.freebox.fr.
+mdns = ["zeroconf>=0.131"]
+
+[dependency-groups]
+# The regeneration pipeline (tools/) is dev-only — it scrapes and parses the
+# Sphinx HTML docs. Not needed to run the server.
+pipeline = ["beautifulsoup4>=4.12"]
+dev = [
+    "jsonschema>=4.26.0",
+    "openapi-spec-validator>=0.9.0",
+    "pytest>=8",
+    "pytest-asyncio>=1.4.0",
+    "respx>=0.23.1",
+    "ruff>=0.6",
+    { include-group = "pipeline" },
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/freebox_mcp"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"spec/freebox-openapi.json" = "freebox_mcp/spec/freebox-openapi.json"
+"spec/freebox-spec.meta.json" = "freebox_mcp/spec/freebox-spec.meta.json"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+markers = [
+    "live: tests that hit a real Freebox (require FREEBOX_TEST=1)",
+]

@@ -1,0 +1,19 @@
+{
+  "slug": "rrd",
+  "operations": [
+    {
+      "operation_id": "get_rrd",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "object", "ref": "RRDFetch"},
+      "permission": null,
+      "parameters": []
+    },
+    {
+      "operation_id": "post_rrd",
+      "response": {"kind": "object", "ref": null},
+      "request": {"kind": "object", "ref": "RRDFetch"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

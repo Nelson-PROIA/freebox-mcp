@@ -1,0 +1,19 @@
+{
+  "slug": "ftp",
+  "operations": [
+    {
+      "operation_id": "get_ftp_config",
+      "response": {"kind": "object", "ref": "FtpConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_ftp_config",
+      "response": {"kind": "object", "ref": "FtpConfig"},
+      "request": {"kind": "object", "ref": "FtpConfig"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

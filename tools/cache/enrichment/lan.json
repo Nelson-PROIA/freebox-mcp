@@ -1,0 +1,64 @@
+{
+  "slug": "lan",
+  "operations": [
+    {
+      "operation_id": "get_lan_browser_interfaces",
+      "response": {"kind": "array", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_lan_browser_interface",
+      "response": {"kind": "array", "ref": "LanHost"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "interface", "in": "path", "type": "string", "required": true, "description": "Name of the LAN browser interface to list hosts on"}
+      ]
+    },
+    {
+      "operation_id": "get_lan_browser_interface_hostid",
+      "response": {"kind": "object", "ref": "LanHost"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "interface", "in": "path", "type": "string", "required": true, "description": "Name of the LAN browser interface the host is on"},
+        {"name": "hostid", "in": "path", "type": "string", "required": true, "description": "Id of the host whose properties are requested"}
+      ]
+    },
+    {
+      "operation_id": "put_lan_browser_interface_hostid",
+      "response": {"kind": "object", "ref": "LanHost"},
+      "request": {"kind": "object", "ref": "LanHost"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "interface", "in": "path", "type": "string", "required": true, "description": "Name of the LAN browser interface the host is on"},
+        {"name": "hostid", "in": "path", "type": "string", "required": true, "description": "Id of the host whose properties are updated"}
+      ]
+    },
+    {
+      "operation_id": "get_lan_config",
+      "response": {"kind": "object", "ref": "LanConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_lan_config",
+      "response": {"kind": "object", "ref": "LanConfig"},
+      "request": {"kind": "object", "ref": "LanConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_lan_wol_interface",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "inline", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "interface", "in": "path", "type": "string", "required": true, "description": "Name of the LAN browser interface the target host is on"}
+      ]
+    }
+  ]
+}

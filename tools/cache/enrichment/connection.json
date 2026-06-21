@@ -1,0 +1,81 @@
+{
+  "slug": "connection",
+  "operations": [
+    {
+      "operation_id": "get_connection",
+      "response": {"kind": "object", "ref": "ConnectionStatus"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_connection_config",
+      "response": {"kind": "object", "ref": "ConnectionConfiguration"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_connection_config",
+      "response": {"kind": "object", "ref": "ConnectionConfiguration"},
+      "request": {"kind": "object", "ref": "ConnectionConfiguration"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_connection_ddns_provider",
+      "response": {"kind": "object", "ref": "DDNSConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "provider", "in": "path", "type": "string", "required": true, "description": "DynDNS provider name (one of ovh, dyndns, noip)"}
+      ]
+    },
+    {
+      "operation_id": "put_connection_ddns_provider",
+      "response": {"kind": "object", "ref": "DDNSConfig"},
+      "request": {"kind": "object", "ref": "DDNSConfig"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "provider", "in": "path", "type": "string", "required": true, "description": "DynDNS provider name (one of ovh, dyndns, noip)"}
+      ]
+    },
+    {
+      "operation_id": "get_connection_ddns_provider_status",
+      "response": {"kind": "object", "ref": "DDNSStatus"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "provider", "in": "path", "type": "string", "required": true, "description": "DynDNS provider name (one of ovh, dyndns, noip)"}
+      ]
+    },
+    {
+      "operation_id": "get_connection_ftth",
+      "response": {"kind": "object", "ref": "FtthStatus"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_connection_ipv6_config",
+      "response": {"kind": "object", "ref": "ConnectionIpv6Configuration"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_connection_ipv6_config",
+      "response": {"kind": "object", "ref": "ConnectionIpv6Configuration"},
+      "request": {"kind": "object", "ref": "ConnectionIpv6Configuration"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_connection_xdsl",
+      "response": {"kind": "object", "ref": "XdslInfos"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

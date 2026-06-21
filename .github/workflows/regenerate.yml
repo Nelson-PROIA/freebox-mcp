@@ -1,0 +1,78 @@
+name: Regenerate spec
+
+# Weekly: re-scrape the official Freebox docs and rebuild the OpenAPI spec
+# deterministically (pure Python, no AI). If the generated spec changed and the
+# tests pass, bump the version, commit, tag, and release — fully hands-off.
+on:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regenerate
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit + tag the regenerated spec
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+      version: ${{ steps.bump.outputs.version }}
+    steps:
+      - uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit # reaches dev.freebox.fr, pypi, github
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+        with:
+          version: "0.11.7"
+      - name: Install
+        run: uv sync --group dev
+      - name: Regenerate from live docs
+        run: uv run python -m tools.build
+      - name: Detect spec change
+        id: diff
+        run: |
+          if git diff --quiet -- spec/freebox-openapi.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No API change."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Spec changed:"; git --no-pager diff --stat -- spec
+          fi
+      - name: Test regenerated spec
+        if: steps.diff.outputs.changed == 'true'
+        run: uv run pytest -q
+      - name: Bump version
+        if: steps.diff.outputs.changed == 'true'
+        id: bump
+        run: echo "version=$(uv run python -m tools.bump)" >> "$GITHUB_OUTPUT"
+      - name: Commit, tag, push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: regenerate Freebox API spec → v${{ steps.bump.outputs.version }}"
+          git tag "v${{ steps.bump.outputs.version }}"
+          git push origin HEAD:${{ github.ref_name }} --follow-tags
+
+  release:
+    needs: regenerate
+    if: needs.regenerate.outputs.changed == 'true'
+    # GITHUB_TOKEN pushes don't trigger the tag workflow, so we call it directly.
+    uses: ./.github/workflows/release.yml
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+      attestations: write
+    with:
+      ref: v${{ needs.regenerate.outputs.version }}

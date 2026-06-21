@@ -1,0 +1,176 @@
+{
+  "slug": "wifi",
+  "operations": [
+    {
+      "operation_id": "get_wifi_ap",
+      "response": {"kind": "array", "ref": "WifiAp"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_wifi_ap_id",
+      "response": {"kind": "object", "ref": "WifiAp"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "put_wifi_ap_id",
+      "response": {"kind": "object", "ref": "WifiAp"},
+      "request": {"kind": "object", "ref": "WifiAp"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_ap_id_allowed_channel_comb",
+      "response": {"kind": "array", "ref": "WifiAllowedComb"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_ap_id_channel_usage",
+      "response": {"kind": "array", "ref": "WifiChannelUsage"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_ap_id_neighbors",
+      "response": {"kind": "array", "ref": "WifiNeighbor"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "post_wifi_ap_id_neighbors_scan",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_ap_id_stations",
+      "response": {"kind": "array", "ref": "WifiStation"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "wifi access point id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_bss",
+      "response": {"kind": "array", "ref": "WifiBss"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_wifi_bss_id",
+      "response": {"kind": "object", "ref": "WifiBss"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "string", "required": true, "description": "bss id (bssid MAC address)"}
+      ]
+    },
+    {
+      "operation_id": "put_wifi_bss_id",
+      "response": {"kind": "object", "ref": "WifiBss"},
+      "request": {"kind": "object", "ref": "WifiBss"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "string", "required": true, "description": "bss id (bssid MAC address)"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_config",
+      "response": {"kind": "object", "ref": "WifiGlobalConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_wifi_config",
+      "response": {"kind": "object", "ref": "WifiGlobalConfig"},
+      "request": {"kind": "object", "ref": "WifiGlobalConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_wifi_config_reset",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_wifi_mac_filter",
+      "response": {"kind": "array", "ref": "WifiMacFilter"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_wifi_mac_filter",
+      "response": {"kind": "object", "ref": "WifiMacFilter"},
+      "request": {"kind": "object", "ref": "WifiMacFilter"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_wifi_mac_filter_filter_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "filter_id", "in": "path", "type": "string", "required": true, "description": "mac filter id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_mac_filter_filter_id",
+      "response": {"kind": "object", "ref": "WifiMacFilter"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": [
+        {"name": "filter_id", "in": "path", "type": "string", "required": true, "description": "mac filter id"}
+      ]
+    },
+    {
+      "operation_id": "put_wifi_mac_filter_filter_id",
+      "response": {"kind": "object", "ref": "WifiMacFilter"},
+      "request": {"kind": "object", "ref": "WifiMacFilter"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "filter_id", "in": "path", "type": "string", "required": true, "description": "mac filter id"}
+      ]
+    },
+    {
+      "operation_id": "get_wifi_planning",
+      "response": {"kind": "object", "ref": "WifiPlanning"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_wifi_planning",
+      "response": {"kind": "object", "ref": "WifiPlanning"},
+      "request": {"kind": "object", "ref": "WifiPlanning"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

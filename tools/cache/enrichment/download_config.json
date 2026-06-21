@@ -1,0 +1,26 @@
+{
+  "slug": "download_config",
+  "operations": [
+    {
+      "operation_id": "get_downloads_config",
+      "response": {"kind": "object", "ref": "DownloadConfiguration"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "downloader",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_downloads_config",
+      "response": {"kind": "object", "ref": "DownloadConfiguration"},
+      "request": {"kind": "object", "ref": "DownloadConfiguration"},
+      "permission": "downloader",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_downloads_throttling",
+      "response": {"kind": "object", "ref": "DlThrottlingConfig"},
+      "request": {"kind": "object", "ref": "DlThrottlingConfig"},
+      "permission": "downloader",
+      "parameters": []
+    }
+  ]
+}

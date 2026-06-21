@@ -1,0 +1,33 @@
+{
+  "slug": "network_share",
+  "operations": [
+    {
+      "operation_id": "get_netshare_afp",
+      "response": {"kind": "object", "ref": "AfpConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_netshare_afp",
+      "response": {"kind": "object", "ref": "AfpConfig"},
+      "request": {"kind": "object", "ref": "AfpConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_netshare_samba",
+      "response": {"kind": "object", "ref": "SambaConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_netshare_samba",
+      "response": {"kind": "object", "ref": "SambaConfig"},
+      "request": {"kind": "object", "ref": "SambaConfig"},
+      "permission": "settings",
+      "parameters": []
+    }
+  ]
+}

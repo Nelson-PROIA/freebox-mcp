@@ -1,0 +1,78 @@
+{
+  "slug": "parental",
+  "operations": [
+    {
+      "operation_id": "get_parental_config",
+      "response": {"kind": "object", "ref": "ParentalFilterConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "parental",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_parental_config",
+      "response": {"kind": "object", "ref": "ParentalFilterConfig"},
+      "request": {"kind": "object", "ref": "ParentalFilterConfig"},
+      "permission": "parental",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_parental_filter",
+      "response": {"kind": "array", "ref": "ParentalFilter"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "parental",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_parental_filter",
+      "response": {"kind": "object", "ref": "ParentalFilter"},
+      "request": {"kind": "object", "ref": "ParentalFilter"},
+      "permission": "parental",
+      "parameters": []
+    },
+    {
+      "operation_id": "delete_parental_filter_id",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "none", "ref": null},
+      "permission": "parental",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "id of the ParentalFilter rule to delete"}
+      ]
+    },
+    {
+      "operation_id": "get_parental_filter_id",
+      "response": {"kind": "object", "ref": "ParentalFilter"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "parental",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "id of the ParentalFilter rule to retrieve"}
+      ]
+    },
+    {
+      "operation_id": "put_parental_filter_id",
+      "response": {"kind": "object", "ref": "ParentalFilter"},
+      "request": {"kind": "object", "ref": "ParentalFilter"},
+      "permission": "parental",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "id of the ParentalFilter rule to update"}
+      ]
+    },
+    {
+      "operation_id": "get_parental_filter_id_planning",
+      "response": {"kind": "object", "ref": "ParentalFilterPlanning"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "parental",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "id of the parental filter rule whose planning is retrieved"}
+      ]
+    },
+    {
+      "operation_id": "put_parental_filter_id_planning",
+      "response": {"kind": "object", "ref": "ParentalFilterPlanning"},
+      "request": {"kind": "object", "ref": "ParentalFilterPlanning"},
+      "permission": "parental",
+      "parameters": [
+        {"name": "id", "in": "path", "type": "integer", "required": true, "description": "id of the parental filter rule whose planning is updated"}
+      ]
+    }
+  ]
+}

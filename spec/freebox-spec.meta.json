@@ -1,0 +1,13 @@
+{
+  "doc_version": "9ba63963",
+  "doc_source": "https://dev.freebox.fr/sdk/os/",
+  "scraped_at": "2026-06-21T00:53:12.898158+00:00",
+  "spec_version": "9ba63963",
+  "overrides_applied": true,
+  "counts": {
+    "paths": 155,
+    "operations": 232,
+    "schemas": 117,
+    "error_codes": 309
+  }
+}

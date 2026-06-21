@@ -1,0 +1,35 @@
+{
+  "slug": "airmedia",
+  "operations": [
+    {
+      "operation_id": "get_airmedia_config",
+      "response": {"kind": "object", "ref": "AirMediaConfig"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "put_airmedia_config",
+      "response": {"kind": "object", "ref": "AirMediaConfig"},
+      "request": {"kind": "object", "ref": "AirMediaConfig"},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "get_airmedia_receivers",
+      "response": {"kind": "array", "ref": "AirMediaReceiver"},
+      "request": {"kind": "none", "ref": null},
+      "permission": "settings",
+      "parameters": []
+    },
+    {
+      "operation_id": "post_airmedia_receviers_receiver_name",
+      "response": {"kind": "none", "ref": null},
+      "request": {"kind": "object", "ref": "AirMediaReceiverRequest"},
+      "permission": "settings",
+      "parameters": [
+        {"name": "receiver_name", "in": "path", "type": "string", "required": true, "description": "Name of the AirMedia receiver to send the media request to"}
+      ]
+    }
+  ]
+}
