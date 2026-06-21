@@ -185,6 +185,29 @@ def cmd_tools(args) -> int:
     return 0
 
 
+def cmd_sections(args) -> int:
+    """List the API sections (tool groups) — derived from the generated spec, not
+    hardcoded. Use any subset as FREEBOX_SECTIONS to scope the server."""
+    from collections import Counter
+
+    spec = load_spec()
+    counts: Counter[str] = Counter()
+    for item in spec["paths"].values():
+        for method, op in item.items():
+            if method in ("get", "post", "put", "delete"):
+                for tag in op.get("tags", []):
+                    counts[tag] += 1
+    titles = {t["name"]: t.get("description", "") for t in spec.get("tags", [])}
+    for name in sorted(counts):
+        print(f"{name:16} {counts[name]:3} tools   {titles.get(name, '')}")
+    print(
+        f"\n{len(counts)} sections, {sum(counts.values())} tools. "
+        f"Scope with e.g. FREEBOX_SECTIONS={','.join(sorted(counts)[:3])}",
+        file=sys.stderr,
+    )
+    return 0
+
+
 def cmd_run(args) -> int:
     mcp = create_server()
     if args.http:
@@ -214,6 +237,9 @@ def build_parser() -> argparse.ArgumentParser:
     a.set_defaults(func=cmd_authorize)
     sub.add_parser("login", help="open a session, print permissions").set_defaults(func=cmd_login)
     sub.add_parser("tools", help="list generated tools").set_defaults(func=cmd_tools)
+    sub.add_parser(
+        "sections", help="list API sections (FREEBOX_SECTIONS values), derived from the spec"
+    ).set_defaults(func=cmd_sections)
     c = sub.add_parser("call", help="invoke one operation")
     c.add_argument("operation")
     c.add_argument("data", nargs="?", help="JSON request body")
