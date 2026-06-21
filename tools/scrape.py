@@ -11,7 +11,6 @@ from __future__ import annotations
 import hashlib
 import os
 import re
-import sys
 import time
 import urllib.parse
 import urllib.request
@@ -116,11 +115,9 @@ def main() -> int:
 
     for slug in sections:
         url = urllib.parse.urljoin(base, f"{slug}/")
-        try:
-            data = _fetch(url)
-        except Exception as exc:  # noqa: BLE001
-            print(f"[scrape]   ! {slug}: {exc}", file=sys.stderr)
-            continue
+        # Fail hard: a missing section would silently produce a degraded spec,
+        # which the regeneration cron could then commit + release.
+        data = _fetch(url)
         (HTML_DIR / f"{slug}.html").write_bytes(data)
         files[f"{slug}.html"] = {"url": url, "sha256": _sha256(data), "bytes": len(data)}
         print(f"[scrape]   + {slug}.html ({len(data)} bytes)")

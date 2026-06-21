@@ -153,23 +153,6 @@ def path_param_names(path: str) -> list[str]:
     return re.findall(r"\{([^}]+)\}", path)
 
 
-def repair_descname(text: str) -> tuple[str, str] | None:
-    """Repair a malformed property descname like ``total bytes int [ro]``.
-
-    Some Freebox property definitions put the whole ``name type [ro]`` line into the
-    ``descname`` code as plain text (a doc bug). Recover ``(name, type_token)`` by
-    locating the first recognized type keyword; everything before it is the name.
-    """
-    toks = text.split()
-    for i, t in enumerate(toks):
-        if i == 0:
-            continue
-        if t.lower() in PRIMITIVES or t.strip("[]").lower() in PRIMITIVES:
-            name = "_".join(toks[:i])
-            return name, t.lower()
-    return None
-
-
 def infer_schema(value: object, depth: int = 0) -> dict:
     """Infer a JSON Schema fragment from an example JSON value (for endpoints whose
     result is not a documented named object — logs, ad-hoc dicts, arrays)."""
@@ -330,12 +313,6 @@ def parse_property(dl: Tag, known_objects: set[str]) -> Property:
         else TypeSpec(kind="primitive", json_type="string")
     )
     readonly, writeonly, optional = _modifiers(dt) if dt else (False, False, False)
-    # Repair malformed descnames (e.g. "total bytes int [ro]" with no type element).
-    if " " in name:
-        fixed = repair_descname(name)
-        if fixed:
-            name, type_token = fixed
-            tspec = _resolve_token(type_token, known_objects)
     enums = _enum_table(dd)
     # description = dd text minus any enum table content
     desc = ""
@@ -453,46 +430,13 @@ def _all_object_refs(dd: Tag, known_objects: set[str]) -> list[str]:
     return refs
 
 
-_LIST_OF = re.compile(r"(?:list|array|table)\s+of\s+`?([A-Z][A-Za-z0-9]+)")
-_CAP_WORD = re.compile(r"\b([A-Z][A-Za-z0-9]{2,})\b")
-
-
-def _guess_result(
-    path: str, prose: str, known_objects: set[str], page_objects: set[str]
-) -> tuple[str, str | None]:
-    """Deterministic best-effort (kind, ref) when there is no example or linked
-    reference: from 'list of X' prose, a documented object named in the prose, or a
-    path resource segment that matches a documented object *in the same section*
-    (cross-section path matches are too unreliable — e.g. nat 'redir' vs igd 'UPnPRedir')."""
-    path_s = path.rstrip("/")
-    is_collection = not re.search(r"\{[^}]+\}$", path_s)
-    m = _LIST_OF.search(prose)
-    if m and m.group(1) in known_objects:
-        return "array", m.group(1)
-    for mm in _CAP_WORD.finditer(prose):
-        if mm.group(1) in known_objects:
-            return ("array" if is_collection else "object"), mm.group(1)
-    segs = [s for s in path_s.strip("/").split("/") if not s.startswith("{")]
-    if segs:
-        tail = segs[-1].replace("_", "").lower()
-        if len(tail) >= 4:
-            for name in sorted(page_objects, key=len):
-                if tail in name.lower():
-                    return ("array" if is_collection else "object"), name
-    return "unknown", None
-
-
 def _resolve_response(
-    method: str,
-    path: str,
-    prose: str,
-    refs_before: list[str],
-    all_refs: list[str],
-    resp_ex: object,
-    known_objects: set[str],
-    page_objects: set[str],
+    method: str, refs_before: list[str], all_refs: list[str], resp_ex: object
 ) -> tuple[str, str | None, dict | None]:
-    """Decide the result schema for an operation. Returns (kind, object_name, inferred)."""
+    """Decide the result schema for an operation, using only what the docs
+    deterministically provide: the example response's `result`, or an object the
+    prose links to. Anything else stays 'unknown' — no name-matching guesses.
+    Returns (kind, object_name, inferred)."""
     result_val = resp_ex.get("result") if isinstance(resp_ex, dict) else None
     has_result_key = isinstance(resp_ex, dict) and "result" in resp_ex
     ref = refs_before[0] if refs_before else (all_refs[0] if all_refs else None)
@@ -513,11 +457,10 @@ def _resolve_response(
         if ref and not has_result_key:
             return "object", ref, None
         return "none", None, None
-    # No example at all: a linked reference, else a deterministic path/prose guess.
+    # No example: a linked object reference if the docs gave one, else unknown.
     if ref:
         return "object", ref, None
-    kind, guess = _guess_result(path, prose, known_objects, page_objects)
-    return (kind, guess, None) if guess else ("unknown", None, None)
+    return "unknown", None, None
 
 
 def _query_from_example(dd: Tag) -> list[str]:
@@ -532,7 +475,7 @@ def _query_from_example(dd: Tag) -> list[str]:
     return [kv.split("=")[0] for kv in qs.split("&") if kv]
 
 
-def parse_operation(dt: Tag, inv_op, known_objects: set[str], page_objects: set[str]) -> Operation:
+def parse_operation(dt: Tag, inv_op, known_objects: set[str]) -> Operation:
     dd = dt.find_next_sibling("dd")
     path_doc = inv_op.path
     path, vprefix = strip_version(path_doc)
@@ -563,10 +506,7 @@ def parse_operation(dt: Tag, inv_op, known_objects: set[str], page_objects: set[
 
     method = inv_op.method
     all_refs = _all_object_refs(dd, known_objects) if dd else []
-    prose = " ".join(p for p in (summary, description) if p)
-    kind, response_object, inferred = _resolve_response(
-        method, path, prose, refs, all_refs, resp_ex, known_objects, page_objects
-    )
+    kind, response_object, inferred = _resolve_response(method, refs, all_refs, resp_ex)
 
     # Request body object: prefer an object confirmed by the example request body.
     request_object = None
@@ -605,13 +545,10 @@ def parse_operation(dt: Tag, inv_op, known_objects: set[str], page_objects: set[
 # --------------------------------------------------------------------------- #
 def build_ir(inv: Inventory) -> dict:
     known_objects = {o.name for o in inv.objects}
-    # group inventory operations + objects by page
+    # group inventory operations by page
     ops_by_page: dict[str, list] = {}
     for op in inv.operations:
         ops_by_page.setdefault(op.page, []).append(op)
-    objects_by_page: dict[str, set[str]] = {}
-    for obj in inv.objects:
-        objects_by_page.setdefault(obj.page, set()).add(obj.name)
 
     operations: list[dict] = []
     schemas: dict[str, dict] = {}
@@ -655,8 +592,7 @@ def build_ir(inv: Inventory) -> dict:
                     )
                 )
                 continue
-            page_objects = objects_by_page.get(page, set())
-            operations.append(asdict(parse_operation(dt, inv_op, known_objects, page_objects)))
+            operations.append(asdict(parse_operation(dt, inv_op, known_objects)))
 
         # objects (an object may be documented across several dl.object blocks,
         # e.g. VPNClientConfig base fields + variant fields — merge their properties)

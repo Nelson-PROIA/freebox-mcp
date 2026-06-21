@@ -18,11 +18,6 @@ dependencies = [
 [project.scripts]
 freebox-mcp = "freebox_mcp.__main__:main"
 
-[project.optional-dependencies]
-# `pip install freebox-mcp[mdns]` enables zeroconf-based discovery as a
-# fallback to the default HTTP discovery via http://mafreebox.freebox.fr.
-mdns = ["zeroconf>=0.131"]
-
 [dependency-groups]
 # The regeneration pipeline (tools/) is dev-only — it scrapes and parses the
 # Sphinx HTML docs. Not needed to run the server.

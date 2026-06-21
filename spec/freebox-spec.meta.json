@@ -7,7 +7,6 @@
     "paths": 155,
     "operations": 232,
     "schemas": 117,
-    "error_codes": 309,
-    "untyped_results": 9
+    "error_codes": 309
   }
 }

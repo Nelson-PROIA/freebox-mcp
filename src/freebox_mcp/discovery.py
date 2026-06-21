@@ -1,8 +1,8 @@
 """Freebox discovery: find the box and choose a base URL.
 
-The box advertises itself at ``http://mafreebox.freebox.fr/api_version`` (and via
-mDNS). From that we learn the API major version and the remote-access domain.
-We then pick the best transport: verified HTTPS when reachable, else LAN HTTP.
+The box advertises itself at ``http://mafreebox.freebox.fr/api_version``. From
+that we learn the API major version and the remote-access domain. We then pick
+the best transport: verified HTTPS when reachable, else LAN HTTP.
 """
 
 from __future__ import annotations

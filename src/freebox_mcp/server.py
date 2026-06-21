@@ -56,10 +56,11 @@ def _resolve_endpoint(settings: Settings) -> Endpoint:
 def _route_maps(settings: Settings) -> list[RouteMap]:
     """Generation parameters (not post-edits): which routes become tools.
 
-    /login/ is the auth handshake (handled by the transport, not callable as a
-    tool); FREEBOX_SECTIONS optionally narrows the surface by section tag.
+    /login/ is the auth handshake (handled by the transport); /ws/ endpoints are
+    WebSocket channels that can't work as plain HTTP tools — exclude both.
+    FREEBOX_SECTIONS optionally narrows the surface by section tag.
     """
-    maps = [RouteMap(pattern=r"^/login/", mcp_type=MCPType.EXCLUDE)]
+    maps = [RouteMap(pattern=r"^/(login|ws)/", mcp_type=MCPType.EXCLUDE)]
     if settings.include_sections:
         for section in settings.include_sections:
             maps.append(RouteMap(tags={section}, mcp_type=MCPType.TOOL))

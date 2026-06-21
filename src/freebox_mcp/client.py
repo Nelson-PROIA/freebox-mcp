@@ -49,23 +49,31 @@ class SessionManager:
     async def get_token(self) -> str:
         if self._token:
             return self._token
-        return await self.refresh()
+        async with self._lock:
+            # double-checked: another caller may have opened the session while we waited
+            if self._token:
+                return self._token
+            return await self._open()
 
     async def refresh(self) -> str:
+        async with self._lock:
+            return await self._open()
+
+    async def _open(self) -> str:
+        """Open a new session. The caller must hold self._lock."""
         if not self._app_token:
             raise FreeboxError(
                 "This app is not authorized on the Freebox yet. Run `freebox-mcp authorize` "
                 "and press the button on the Freebox front panel.",
                 error_code="not_registered",
             )
-        async with self._lock:
-            session: Session = await open_session(
-                self._raw, self._prefix, self._app_id, self._app_token
-            )
-            self._token = session.session_token
-            self.permissions = session.permissions
-            log.debug("opened Freebox session (permissions: %s)", sorted(session.permissions))
-            return self._token
+        session: Session = await open_session(
+            self._raw, self._prefix, self._app_id, self._app_token
+        )
+        self._token = session.session_token
+        self.permissions = session.permissions
+        log.debug("opened Freebox session (permissions: %s)", sorted(session.permissions))
+        return self._token
 
 
 class FreeboxTransport(httpx.AsyncBaseTransport):
