@@ -1,8 +1,7 @@
 """Parse the cached Freebox docs HTML into an intermediate representation (IR).
 
 The IR is doc-shaped, not yet OpenAPI: a list of operations and a dict of named
-schemas. ``build_openapi`` turns it into a real spec; the verify workflow may
-enrich ``tools/cache/ir.json`` in between.
+schemas. ``build_openapi`` turns it into a real spec. Fully deterministic.
 
 Robustness strategy: operation method/path come from the authoritative
 ``objects.inv`` (joined by HTML anchor), never guessed from rendered markup.
@@ -454,8 +453,44 @@ def _all_object_refs(dd: Tag, known_objects: set[str]) -> list[str]:
     return refs
 
 
+_LIST_OF = re.compile(r"(?:list|array|table)\s+of\s+`?([A-Z][A-Za-z0-9]+)")
+_CAP_WORD = re.compile(r"\b([A-Z][A-Za-z0-9]{2,})\b")
+
+
+def _guess_result(
+    path: str, prose: str, known_objects: set[str], page_objects: set[str]
+) -> tuple[str, str | None]:
+    """Deterministic best-effort (kind, ref) when there is no example or linked
+    reference: from 'list of X' prose, a documented object named in the prose, or a
+    path resource segment that matches a documented object *in the same section*
+    (cross-section path matches are too unreliable — e.g. nat 'redir' vs igd 'UPnPRedir')."""
+    path_s = path.rstrip("/")
+    is_collection = not re.search(r"\{[^}]+\}$", path_s)
+    m = _LIST_OF.search(prose)
+    if m and m.group(1) in known_objects:
+        return "array", m.group(1)
+    for mm in _CAP_WORD.finditer(prose):
+        if mm.group(1) in known_objects:
+            return ("array" if is_collection else "object"), mm.group(1)
+    segs = [s for s in path_s.strip("/").split("/") if not s.startswith("{")]
+    if segs:
+        tail = segs[-1].replace("_", "").lower()
+        if len(tail) >= 4:
+            for name in sorted(page_objects, key=len):
+                if tail in name.lower():
+                    return ("array" if is_collection else "object"), name
+    return "unknown", None
+
+
 def _resolve_response(
-    method: str, refs_before: list[str], all_refs: list[str], resp_ex: object
+    method: str,
+    path: str,
+    prose: str,
+    refs_before: list[str],
+    all_refs: list[str],
+    resp_ex: object,
+    known_objects: set[str],
+    page_objects: set[str],
 ) -> tuple[str, str | None, dict | None]:
     """Decide the result schema for an operation. Returns (kind, object_name, inferred)."""
     result_val = resp_ex.get("result") if isinstance(resp_ex, dict) else None
@@ -478,10 +513,11 @@ def _resolve_response(
         if ref and not has_result_key:
             return "object", ref, None
         return "none", None, None
-    # No example at all: fall back to a documented object reference if any.
+    # No example at all: a linked reference, else a deterministic path/prose guess.
     if ref:
         return "object", ref, None
-    return "unknown", None, None
+    kind, guess = _guess_result(path, prose, known_objects, page_objects)
+    return (kind, guess, None) if guess else ("unknown", None, None)
 
 
 def _query_from_example(dd: Tag) -> list[str]:
@@ -496,7 +532,7 @@ def _query_from_example(dd: Tag) -> list[str]:
     return [kv.split("=")[0] for kv in qs.split("&") if kv]
 
 
-def parse_operation(dt: Tag, inv_op, known_objects: set[str]) -> Operation:
+def parse_operation(dt: Tag, inv_op, known_objects: set[str], page_objects: set[str]) -> Operation:
     dd = dt.find_next_sibling("dd")
     path_doc = inv_op.path
     path, vprefix = strip_version(path_doc)
@@ -527,7 +563,10 @@ def parse_operation(dt: Tag, inv_op, known_objects: set[str]) -> Operation:
 
     method = inv_op.method
     all_refs = _all_object_refs(dd, known_objects) if dd else []
-    kind, response_object, inferred = _resolve_response(method, refs, all_refs, resp_ex)
+    prose = " ".join(p for p in (summary, description) if p)
+    kind, response_object, inferred = _resolve_response(
+        method, path, prose, refs, all_refs, resp_ex, known_objects, page_objects
+    )
 
     # Request body object: prefer an object confirmed by the example request body.
     request_object = None
@@ -566,10 +605,13 @@ def parse_operation(dt: Tag, inv_op, known_objects: set[str]) -> Operation:
 # --------------------------------------------------------------------------- #
 def build_ir(inv: Inventory) -> dict:
     known_objects = {o.name for o in inv.objects}
-    # group inventory operations by page
+    # group inventory operations + objects by page
     ops_by_page: dict[str, list] = {}
     for op in inv.operations:
         ops_by_page.setdefault(op.page, []).append(op)
+    objects_by_page: dict[str, set[str]] = {}
+    for obj in inv.objects:
+        objects_by_page.setdefault(obj.page, set()).add(obj.name)
 
     operations: list[dict] = []
     schemas: dict[str, dict] = {}
@@ -613,7 +655,8 @@ def build_ir(inv: Inventory) -> dict:
                     )
                 )
                 continue
-            operations.append(asdict(parse_operation(dt, inv_op, known_objects)))
+            page_objects = objects_by_page.get(page, set())
+            operations.append(asdict(parse_operation(dt, inv_op, known_objects, page_objects)))
 
         # objects (an object may be documented across several dl.object blocks,
         # e.g. VPNClientConfig base fields + variant fields — merge their properties)

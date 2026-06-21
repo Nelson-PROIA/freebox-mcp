@@ -88,7 +88,7 @@ def _https_reachable(base: str, prefix: str, settings: Settings) -> bool:
 
 
 def choose_endpoint(settings: Settings, discovery: Discovery | None = None) -> Endpoint:
-    """Select the base URL + transport, honoring overrides."""
+    """Select the base URL + transport, honoring FREEBOX_API_BASE_URL / FREEBOX_TRANSPORT."""
     discovery = discovery or fetch_discovery(settings)
     prefix = discovery.api_path_prefix
 

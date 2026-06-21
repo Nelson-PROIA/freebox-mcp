@@ -3,16 +3,15 @@
     python -m tools.build            # scrape docs, parse, render, emit OpenAPI
     python -m tools.build --offline  # skip scraping, use the existing cache
 
-This is the single command CI runs on a schedule. It is pure Python: no AI,
-no manual steps. The only non-deterministic input (permissions / a few response
-bindings) lives in the committed spec/overrides.json, which is merged in.
+This is the single command CI runs on a schedule. It is 100% deterministic pure
+Python — no AI, no manual steps, no curated data. Same docs in, same spec out.
 """
 
 from __future__ import annotations
 
 import sys
 
-from . import build_openapi, inventory, parse, render, scrape
+from . import build_openapi, inventory, parse, scrape
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -29,8 +28,6 @@ def main(argv: list[str] | None = None) -> int:
     inventory.main()
     print("\n== parse ==")
     parse.main()
-    print("\n== render ==")
-    render.main()
     print("\n== build_openapi ==")
     build_openapi.main()
     print("\nDone.")

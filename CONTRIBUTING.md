@@ -6,8 +6,7 @@ Thanks for your interest!
 
 - `tools/` — the **deterministic** regeneration pipeline (scrape → inventory → parse → render →
   build_openapi). Pure Python, no AI. This is what CI runs.
-- `spec/` — the generated `freebox-openapi.json`, its `*.meta.json`, and the committed
-  `overrides.json` (one-time AI audit, treated as static data).
+- `spec/` — the generated `freebox-openapi.json` and its `*.meta.json` (deterministic output; no AI).
 - `src/freebox_mcp/` — the MCP server (discovery, auth, client, FastMCP wiring).
 - `tests/` — unit + integration (respx-mocked) + an opt-in `live` suite.
 
@@ -25,9 +24,12 @@ always rebuild and commit `spec/` + `tools/cache/` together.
 
 ## Changing the spec
 
-- Parser/structure fixes go in `tools/parse.py` / `tools/build_openapi.py`.
-- Non-derivable facts (a permission, a response binding the docs don't make machine-readable) go in
-  `spec/overrides.json` — keep it small and explain each entry.
+Everything is deterministic — there is no AI and no per-endpoint hand data.
+
+- Parser/structure fixes go in `tools/parse.py`.
+- Facts the docs don't encode machine-readably (the section→permission map; response-binding
+  heuristics) live as small deterministic config/logic in `tools/build_openapi.py` / `tools/parse.py`.
+  Endpoints the docs genuinely don't specify keep an untyped result — that's honest, not a TODO.
 
 ## Releases
 

@@ -451,10 +451,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AirMediaReceiver"
-                  }
+                  "$ref": "#/components/schemas/AirMediaReceiver"
                 }
               }
             }
@@ -714,20 +711,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the AirMedia receiver to send the media request to"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AirMediaReceiverRequest"
-              }
             }
           }
-        }
+        ]
       }
     },
     "/call/log/": {
@@ -744,10 +730,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CallEntry"
-                  }
+                  "$ref": "#/components/schemas/CallEntry"
                 }
               }
             }
@@ -797,7 +780,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallEntry"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -831,6 +821,16 @@
               "description": "No call with this id"
             }
           ]
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallEntry"
+              }
+            }
+          }
         }
       }
     },
@@ -844,7 +844,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallEntry"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -878,6 +885,16 @@
               "description": "No call with this id"
             }
           ]
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallEntry"
+              }
+            }
+          }
         }
       }
     },
@@ -891,7 +908,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallEntry"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -933,8 +957,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the CallEntry to delete."
+            }
           }
         ]
       },
@@ -996,8 +1019,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the CallEntry to retrieve."
+            }
           }
         ]
       },
@@ -1059,8 +1081,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the CallEntry to update."
+            }
           }
         ],
         "requestBody": {
@@ -1416,8 +1437,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+            }
           }
         ]
       },
@@ -1507,8 +1527,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+            }
           }
         ],
         "requestBody": {
@@ -1610,8 +1629,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "DynDNS provider name (one of ovh, dyndns, noip)"
+            }
           }
         ]
       }
@@ -2234,7 +2252,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactNumber"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -2280,8 +2305,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to delete"
+            }
           }
         ]
       },
@@ -2347,8 +2371,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to return"
+            }
           }
         ]
       },
@@ -2414,8 +2437,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to update"
+            }
           }
         ],
         "requestBody": {
@@ -2440,7 +2462,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactNumber"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -2486,8 +2515,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to delete"
+            }
           }
         ]
       },
@@ -2553,8 +2581,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to return"
+            }
           }
         ]
       },
@@ -2620,8 +2647,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to update"
+            }
           }
         ],
         "requestBody": {
@@ -2646,7 +2672,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactNumber"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -2692,8 +2725,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to delete"
+            }
           }
         ]
       },
@@ -2759,8 +2791,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to return"
+            }
           }
         ]
       },
@@ -2826,8 +2857,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to update"
+            }
           }
         ],
         "requestBody": {
@@ -2852,7 +2882,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactNumber"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -2898,8 +2935,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to delete"
+            }
           }
         ]
       },
@@ -2965,8 +3001,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to return"
+            }
           }
         ]
       },
@@ -3032,8 +3067,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact number/address/url/email to update"
+            }
           }
         ],
         "requestBody": {
@@ -3062,10 +3096,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ContactEntry"
-                  }
+                  "$ref": "#/components/schemas/ContactEntry"
                 }
               }
             }
@@ -3106,36 +3137,7 @@
               "description": "no entry matched your request"
             }
           ]
-        },
-        "parameters": [
-          {
-            "name": "start",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "offset of the first contact to return"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "limit of contacts to return (-1 means no limit)"
-          },
-          {
-            "name": "group_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "return only the contacts that belong to this group"
-          }
-        ]
+        }
       },
       "post": {
         "operationId": "post_contact",
@@ -3270,8 +3272,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the contact whose numbers/addresses/urls/emails are returned"
+            }
           }
         ]
       }
@@ -3286,7 +3287,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactEntry"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -3332,8 +3340,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ContactEntry to delete"
+            }
           }
         ]
       },
@@ -3399,8 +3406,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ContactEntry to return"
+            }
           }
         ]
       },
@@ -3466,8 +3472,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ContactEntry to update"
+            }
           }
         ],
         "requestBody": {
@@ -3852,7 +3857,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DhcpStaticLease"
+                  "type": "object",
+                  "properties": {
+                    "mac": {
+                      "type": "string"
+                    },
+                    "comment": {
+                      "type": "string"
+                    },
+                    "hostname": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "ip": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -3923,11 +3945,15 @@
           ]
         },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DhcpStaticLease"
+                "type": "object",
+                "additionalProperties": true
+              },
+              "example": {
+                "ip": "192.168.1.222",
+                "mac": "00:00:00:11:11:11"
               }
             }
           }
@@ -4017,9 +4043,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "DHCP static lease object id (the host mac address)"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -4112,9 +4137,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "DHCP static lease object id (the host mac address)"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -4127,14 +4151,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DhcpStaticLease"
-                }
-              }
-            }
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -4207,17 +4224,19 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "DHCP static lease object id (the host mac address)"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DhcpStaticLease"
+                "type": "object",
+                "additionalProperties": true
+              },
+              "example": {
+                "comment": "Mon PC"
               }
             }
           }
@@ -4238,10 +4257,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Download"
-                  }
+                  "$ref": "#/components/schemas/Download"
                 }
               }
             }
@@ -5034,7 +5050,21 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DownloadBlacklistEntry"
+                  "type": "object",
+                  "properties": {
+                    "host": {
+                      "type": "string"
+                    },
+                    "expire": {
+                      "type": "integer"
+                    },
+                    "global": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -5806,8 +5836,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "IP of the blacklist entry to delete"
+            }
           }
         ]
       }
@@ -5816,7 +5845,7 @@
       "get": {
         "operationId": "get_downloads_stats",
         "summary": "Get downloads stats",
-        "description": "Returns `DownloadStats`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "description": "Get downloads stats\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -5826,7 +5855,71 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DownloadStats"
+                  "type": "object",
+                  "properties": {
+                    "throttling_rate": {
+                      "type": "object",
+                      "properties": {
+                        "rx_rate": {
+                          "type": "integer"
+                        },
+                        "tx_rate": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "nb_tasks_stopped": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_checking": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_queued": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_extracting": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_done": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_repairing": {
+                      "type": "integer"
+                    },
+                    "throttling_mode": {
+                      "type": "string"
+                    },
+                    "nb_tasks_active": {
+                      "type": "integer"
+                    },
+                    "tx_rate": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_downloading": {
+                      "type": "integer"
+                    },
+                    "throttling_is_scheduled": {
+                      "type": "boolean"
+                    },
+                    "nb_tasks": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_error": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_stopping": {
+                      "type": "integer"
+                    },
+                    "nb_rss_items_unread": {
+                      "type": "integer"
+                    },
+                    "rx_rate": {
+                      "type": "integer"
+                    },
+                    "nb_tasks_seeding": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -6216,7 +6309,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Download"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -6598,8 +6698,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Download task to delete (without erasing files)"
+            }
           }
         ]
       },
@@ -7001,8 +7100,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Download task to retrieve"
+            }
           }
         ]
       },
@@ -7404,8 +7502,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Download task to update"
+            }
           }
         ],
         "requestBody": {
@@ -7812,8 +7909,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Download task to delete and erase its downloaded files"
+            }
           }
         ]
       }
@@ -8217,8 +8313,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Download task whose log to retrieve"
+            }
           }
         ]
       }
@@ -8227,7 +8322,7 @@
       "get": {
         "operationId": "get_downloads_task_id_blacklist",
         "summary": "List downloads blacklist",
-        "description": "Returns a list of `DownloadBlacklistEntry`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "description": "List downloads blacklist\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -8239,7 +8334,21 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DownloadBlacklistEntry"
+                    "type": "object",
+                    "properties": {
+                      "host": {
+                        "type": "string"
+                      },
+                      "expire": {
+                        "type": "integer"
+                      },
+                      "global": {
+                        "type": "boolean"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
@@ -8625,8 +8734,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task whose blacklist entries to list"
+            }
           }
         ]
       }
@@ -9023,8 +9131,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task whose blacklist to empty (also removes global entries)"
+            }
           }
         ]
       }
@@ -9032,8 +9139,8 @@
     "/downloads/{task_id}/files": {
       "get": {
         "operationId": "get_downloads_task_id_files",
-        "summary": "List downloads files",
-        "description": "Returns a list of `DownloadFile`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "Get downloads files",
+        "description": "Get downloads files\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -9043,10 +9150,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DownloadFile"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -9431,8 +9535,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task whose files to list"
+            }
           }
         ]
       }
@@ -9829,17 +9932,15 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task"
+            }
           },
           {
             "name": "file_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "id of the download file whose priority to change"
+              "type": "integer"
+            }
           }
         ]
       }
@@ -9847,8 +9948,8 @@
     "/downloads/{task_id}/peers": {
       "get": {
         "operationId": "get_downloads_task_id_peers",
-        "summary": "List downloads peers",
-        "description": "Returns a list of `DownloadPeer`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "summary": "Get downloads peers",
+        "description": "Get downloads peers\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -9858,10 +9959,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DownloadPeer"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -10246,8 +10344,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the bittorrent download task whose peers to list"
+            }
           }
         ]
       }
@@ -10651,8 +10748,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task whose piece status string to retrieve"
+            }
           }
         ]
       }
@@ -10661,7 +10757,7 @@
       "get": {
         "operationId": "get_downloads_task_id_trackers",
         "summary": "List downloads trackers",
-        "description": "Returns a list of `DownloadTracker`.\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
+        "description": "List downloads trackers\n\nRequires the `downloader` permission.\n\nError codes: `task_not_found`, `invalid_operation`, `invalid_file`, `invalid_url`, `not_implemented`, `out_of_memory`, `invalid_task_type`, `hibernating`, `need_bt_stopped_done`, `bt_tracker_not_found`, `too_many_tasks`, `invalid_address`, `port_conflict`, `invalid_priority`, `internal_error`, `ctx_file_error`, `exists`, `port_outside_range`, `none`, `internal`, `disk_full`, `unknown`, `parse_error`, `http_301`, `http_400`, `http_401`, `http_402`, `http_403`, `http_404`, `http_405`",
         "tags": [
           "download"
         ],
@@ -10673,7 +10769,33 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DownloadTracker"
+                    "type": "object",
+                    "properties": {
+                      "nseeders": {
+                        "type": "integer"
+                      },
+                      "nleechers": {
+                        "type": "integer"
+                      },
+                      "reannounce_in": {
+                        "type": "integer"
+                      },
+                      "is_backup": {
+                        "type": "boolean"
+                      },
+                      "interval": {
+                        "type": "integer"
+                      },
+                      "min_interval": {
+                        "type": "integer"
+                      },
+                      "announce": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
@@ -11059,8 +11181,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the bittorrent download task whose trackers to list"
+            }
           }
         ]
       },
@@ -11455,8 +11576,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the bittorrent download task to add a tracker to"
+            }
           }
         ]
       }
@@ -11853,8 +11973,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task"
+            }
           },
           {
             "name": "announce",
@@ -11862,8 +11981,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "announce URL of the tracker to remove"
+            }
           }
         ]
       },
@@ -12258,8 +12376,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the download task"
+            }
           },
           {
             "name": "announce",
@@ -12267,8 +12384,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "announce URL of the tracker to update"
+            }
           }
         ]
       }
@@ -12632,7 +12748,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DownloadFeedItem"
+                    "$ref": "#/components/schemas/DownloadFeed"
                   }
                 }
               }
@@ -12686,8 +12802,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed whose items are returned"
+            }
           }
         ]
       }
@@ -12752,8 +12867,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed whose items are marked as read"
+            }
           }
         ]
       }
@@ -12768,7 +12882,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadFeed"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -12818,8 +12939,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed containing the item"
+            }
           },
           {
             "name": "item_id",
@@ -12827,8 +12947,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeedItem to update"
+            }
           }
         ],
         "requestBody": {
@@ -12836,7 +12955,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DownloadFeedItem"
+                "$ref": "#/components/schemas/DownloadFeed"
               }
             }
           }
@@ -12903,8 +13022,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed containing the item"
+            }
           },
           {
             "name": "item_id",
@@ -12912,8 +13030,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeedItem to enqueue for download"
+            }
           }
         ]
       }
@@ -12928,7 +13045,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadFeed"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -12978,8 +13102,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed to delete"
+            }
           }
         ]
       },
@@ -13049,8 +13172,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed to retrieve"
+            }
           }
         ]
       },
@@ -13120,8 +13242,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed to update"
+            }
           }
         ],
         "requestBody": {
@@ -13196,8 +13317,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the DownloadFeed to remotely refresh"
+            }
           }
         ]
       }
@@ -13333,9 +13453,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Freeplug unique id of the freeplug to retrieve"
+              "type": "integer"
+            }
           }
         ]
       }
@@ -13350,7 +13469,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Freeplug"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -13399,11 +13525,20 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Freeplug unique id of the freeplug to reset"
+              "type": "integer"
+            }
           }
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Freeplug"
+              }
+            }
+          }
+        }
       }
     },
     "/dl/{path}": {
@@ -13416,7 +13551,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Result payload (schema not documented)."
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -13610,8 +13752,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Base64-encoded path of the file to download; returns the raw file contents."
+            }
           }
         ]
       }
@@ -13630,7 +13771,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -13836,7 +14036,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -14042,7 +14301,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -14248,7 +14566,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -14454,7 +14831,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -14660,7 +15096,39 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FileInfo"
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "link": {
+                      "type": "boolean"
+                    },
+                    "parent": {
+                      "type": "string"
+                    },
+                    "modification": {
+                      "type": "integer"
+                    },
+                    "hidden": {
+                      "type": "boolean"
+                    },
+                    "mimetype": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -14857,8 +15325,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Base64-encoded path of the file or folder to get FileInfo for."
+            }
           }
         ]
       }
@@ -14877,10 +15344,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/FileInfo"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -15077,35 +15541,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Base64-encoded path of the directory to list."
-          },
-          {
-            "name": "onlyFolder",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "description": "Only list folders."
-          },
-          {
-            "name": "countSubFolder",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "description": "Return files and subfolder count for folders."
-          },
-          {
-            "name": "removeHidden",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "description": "Don't return hidden files in directory listing."
+            }
           }
         ]
       }
@@ -15323,7 +15759,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -15525,14 +16020,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "Result payload (schema not documented)."
-                }
-              }
-            }
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -15735,7 +16223,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -15941,7 +16488,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FsTask"
+                  "type": "object",
+                  "properties": {
+                    "curr_bytes_done": {
+                      "type": "integer"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "nfiles_done": {
+                      "type": "integer"
+                    },
+                    "started_ts": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "done_ts": {
+                      "type": "integer"
+                    },
+                    "curr_bytes": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nfiles": {
+                      "type": "integer"
+                    },
+                    "created_ts": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "total_bytes_done": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "integer"
+                    },
+                    "eta": {
+                      "type": "integer"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -16147,10 +16753,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/FsTask"
-                  }
+                  "$ref": "#/components/schemas/FsTask"
                 }
               }
             }
@@ -16352,7 +16955,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FsTask"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -16546,8 +17156,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the FsTask task to delete (stops it if running)."
+            }
           }
         ]
       },
@@ -16761,8 +17370,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the FsTask task to retrieve."
+            }
           }
         ]
       },
@@ -16976,8 +17584,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the FsTask task to update (e.g. to change its state)."
+            }
           }
         ],
         "requestBody": {
@@ -17208,8 +17815,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the completed hash FsTask whose computed hash value is returned."
+            }
           }
         ]
       }
@@ -17513,7 +18119,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPnPRedir"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -17554,9 +18167,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "the id of the UPnPRedir redirection to delete"
+              "type": "integer"
+            }
           }
         ]
       }
@@ -17564,8 +18176,8 @@
     "/lan/browser/interfaces/": {
       "get": {
         "operationId": "get_lan_browser_interfaces",
-        "summary": "List lan browser interfaces",
-        "description": "List lan browser interfaces\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `ioerror`, `inval`, `inval_gateway_ip`, `nodev`, `nohost`, `nomem`, `netdown`",
+        "summary": "Get lan browser interfaces",
+        "description": "Get lan browser interfaces\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `ioerror`, `inval`, `inval_gateway_ip`, `nodev`, `nohost`, `nomem`, `netdown`",
         "tags": [
           "lan"
         ],
@@ -17575,8 +18187,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {}
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -17734,8 +18345,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the LAN browser interface to list hosts on"
+            }
           }
         ]
       }
@@ -17827,17 +18437,15 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the LAN browser interface the host is on"
+            }
           },
           {
             "name": "hostid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Id of the host whose properties are requested"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -17927,17 +18535,15 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the LAN browser interface the host is on"
+            }
           },
           {
             "name": "hostid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Id of the host whose properties are updated"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -18204,8 +18810,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the LAN browser interface the target host is on"
+            }
           }
         ]
       }
@@ -18511,16 +19116,6 @@
               "description": "Internal error"
             }
           ]
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TokenRequest"
-              }
-            }
-          }
         }
       }
     },
@@ -18619,8 +19214,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "The track_id returned by the authorize request, used to monitor the app_token authorization status."
+            }
           }
         ]
       }
@@ -18784,16 +19378,6 @@
               "description": "Internal error"
             }
           ]
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SessionStart"
-              }
-            }
-          }
         }
       }
     },
@@ -18867,7 +19451,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DmzConfig"
+                  "$ref": "#/components/schemas/LanConfig"
                 }
               }
             }
@@ -18914,7 +19498,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DmzConfig"
+                "$ref": "#/components/schemas/LanConfig"
               }
             }
           }
@@ -18925,7 +19509,7 @@
       "get": {
         "operationId": "get_fw_incoming",
         "summary": "List fw incoming",
-        "description": "Returns a list of `IncomingPortConfig`.\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
+        "description": "List fw incoming\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
         "tags": [
           "nat"
         ],
@@ -18937,7 +19521,30 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/IncomingPortConfig"
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "in_port": {
+                        "type": "integer"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "netns": {
+                        "type": "string"
+                      },
+                      "max_port": {
+                        "type": "integer"
+                      },
+                      "min_port": {
+                        "type": "integer"
+                      }
+                    }
                   }
                 }
               }
@@ -19044,9 +19651,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Id of the incoming port to retrieve (e.g. http, bittorrent-main)"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -19111,9 +19717,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Id of the incoming port to update (e.g. http, bittorrent-main)"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -19131,8 +19736,8 @@
     "/fw/redir/": {
       "get": {
         "operationId": "get_fw_redir",
-        "summary": "List fw redir",
-        "description": "Returns a list of `PortForwardingConfig`.\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
+        "summary": "Get fw redir",
+        "description": "Get fw redir\n\nRequires the `settings` permission.\n\nError codes: `noent`, `internal_error`, `exist`",
         "tags": [
           "nat"
         ],
@@ -19142,10 +19747,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PortForwardingConfig"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -19265,7 +19867,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortForwardingConfig"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -19311,8 +19920,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the port forwarding rule to delete"
+            }
           }
         ]
       },
@@ -19378,8 +19986,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the port forwarding rule to retrieve"
+            }
           }
         ]
       },
@@ -19445,8 +20052,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the port forwarding rule to update"
+            }
           }
         ],
         "requestBody": {
@@ -19938,7 +20544,54 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ParentalFilter"
+                  "type": "object",
+                  "properties": {
+                    "forced": {
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "hosts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tmp_mode_expire": {
+                      "type": "integer"
+                    },
+                    "ip": {
+                      "type": "string"
+                    },
+                    "forced_mode": {
+                      "type": "string"
+                    },
+                    "scheduling_mode": {
+                      "type": "string"
+                    },
+                    "macs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "current_mapping_idx": {
+                      "type": "integer"
+                    },
+                    "next_change": {
+                      "type": "integer"
+                    },
+                    "desc": {
+                      "type": "string"
+                    },
+                    "tmp_mode": {
+                      "type": "string"
+                    },
+                    "filter_state": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -19981,11 +20634,17 @@
           ]
         },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ParentalFilter"
+                "type": "object",
+                "additionalProperties": true
+              },
+              "example": {
+                "macs": [
+                  "00:07:cb:00:00:69",
+                  "00:07:cb:00:00:42"
+                ]
               }
             }
           }
@@ -20002,7 +20661,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentalFilter"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -20048,8 +20714,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ParentalFilter rule to delete"
+            }
           }
         ]
       },
@@ -20115,8 +20780,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ParentalFilter rule to retrieve"
+            }
           }
         ]
       },
@@ -20182,8 +20846,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the ParentalFilter rule to update"
+            }
           }
         ],
         "requestBody": {
@@ -20261,8 +20924,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the parental filter rule whose planning is retrieved"
+            }
           }
         ]
       },
@@ -20328,8 +20990,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the parental filter rule whose planning is updated"
+            }
           }
         ],
         "requestBody": {
@@ -20639,8 +21300,8 @@
     "/pvr/finished/": {
       "get": {
         "operationId": "get_pvr_finished",
-        "summary": "List pvr finished",
-        "description": "Returns a list of `Frecord`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "Get pvr finished",
+        "description": "Get pvr finished\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -20650,10 +21311,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Frecord"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -20791,7 +21449,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Frecord"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -20921,8 +21586,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Frecord to delete along with its associated files"
+            }
           }
         ]
       },
@@ -21072,8 +21736,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the requested Frecord"
+            }
           }
         ]
       },
@@ -21223,8 +21886,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Frecord to update"
+            }
           }
         ],
         "requestBody": {
@@ -21387,8 +22049,8 @@
     "/pvr/programmed/": {
       "get": {
         "operationId": "get_pvr_programmed",
-        "summary": "List pvr programmed",
-        "description": "Returns a list of `Precord`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "summary": "Get pvr programmed",
+        "description": "Get pvr programmed\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -21398,10 +22060,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Precord"
-                  }
+                  "description": "Result payload (schema not documented)."
                 }
               }
             }
@@ -21689,7 +22348,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Precord"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -21819,8 +22485,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Precord to delete"
+            }
           }
         ]
       },
@@ -21970,8 +22635,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the requested Precord"
+            }
           }
         ]
       },
@@ -22121,8 +22785,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "id of the Precord to update"
+            }
           }
         ],
         "requestBody": {
@@ -22141,7 +22804,7 @@
       "get": {
         "operationId": "get_pvr_quota",
         "summary": "Get pvr quota",
-        "description": "Returns `PvrQuota`.\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
+        "description": "Get pvr quota\n\nRequires the `pvr` permission.\n\nError codes: `noent`, `inval`, `inval_date_fmt`, `inval_end_before_start`, `system_time_incorrect`, `record_duration_too_long`, `record_date_in_past`, `unknown_channel`, `no_channel_svc`, `only_auto_disable`, `cannot_change_en_state`, `cannot_disable_has_data`, `internal_error`, `none`, `file_access_error`, `disk_full`, `private_but_no_private_dir`, `network_problem`, `resource_problem`, `no_stream_available`, `no_data_received`, `missed`, `stopped`, `unknown_error`",
         "tags": [
           "pvr"
         ],
@@ -22151,7 +22814,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PvrQuota"
+                  "type": "object",
+                  "properties": {
+                    "quota_exceeded": {
+                      "type": "boolean"
+                    },
+                    "needed_tresh": {
+                      "type": "integer"
+                    },
+                    "cur_tresh": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -22291,7 +22965,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PvrQuota"
+                  "type": "object",
+                  "properties": {
+                    "quota_exceeded": {
+                      "type": "boolean"
+                    },
+                    "needed_tresh": {
+                      "type": "integer"
+                    },
+                    "cur_tresh": {
+                      "type": "integer"
+                    }
+                  }
                 }
               }
             }
@@ -22434,7 +23119,7 @@
       "get": {
         "operationId": "get_rrd",
         "summary": "Same as post request, but allowed without ‘settings’ permission",
-        "description": "Same as post request, but allowed without ‘settings’ permission",
+        "description": "Same as post request, but allowed without ‘settings’ permission\n\nRequires the `settings` permission.",
         "tags": [
           "rrd"
         ],
@@ -22469,19 +23154,9 @@
           "page": "rrd",
           "doc_anchor": "get--api-v4-rrd-",
           "doc_version_prefix": "v4",
-          "permission": null,
+          "permission": "settings",
           "envelope": true,
           "error_codes": []
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RRDFetch"
-              }
-            }
-          }
         }
       },
       "post": {
@@ -22493,14 +23168,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "Result payload (schema not documented)."
-                }
-              }
-            }
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -22525,16 +23193,6 @@
           "permission": "settings",
           "envelope": true,
           "error_codes": []
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RRDFetch"
-              }
-            }
-          }
         }
       }
     },
@@ -22552,10 +23210,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ShareLink"
-                  }
+                  "$ref": "#/components/schemas/ShareLink"
                 }
               }
             }
@@ -22675,7 +23330,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShareLink"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -22721,8 +23383,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Unique sharing token of the ShareLink to delete"
+            }
           }
         ]
       },
@@ -22788,8 +23449,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Unique sharing token of the ShareLink to retrieve"
+            }
           }
         ]
       }
@@ -23106,8 +23766,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the disk id to retrieve"
+            }
           }
         ]
       },
@@ -23124,7 +23783,89 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StorageDisk"
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "connector": {
+                      "type": "integer"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "active_duration": {
+                      "type": "integer"
+                    },
+                    "partitions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fstype": {
+                            "type": "string"
+                          },
+                          "total_bytes": {
+                            "type": "integer"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "fsck_result": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "disk_id": {
+                            "type": "integer"
+                          },
+                          "free_bytes": {
+                            "type": "integer"
+                          },
+                          "used_bytes": {
+                            "type": "integer"
+                          },
+                          "path": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "idle_duration": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "idle": {
+                      "type": "boolean"
+                    },
+                    "spinning": {
+                      "type": "boolean"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "table_type": {
+                      "type": "string"
+                    },
+                    "temp": {
+                      "type": "integer"
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "firmware": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -23189,16 +23930,18 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the disk id to enable/disable"
+            }
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/StorageDisk"
+                "type": "object",
+                "additionalProperties": true
+              },
+              "example": {
+                "state": "disabled"
               }
             }
           }
@@ -23215,7 +23958,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageDisk"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -23277,21 +24027,15 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the disk id to format"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "additionalProperties": true
-              },
-              "example": {
-                "label": "freebox",
-                "fs_type": "vfat",
-                "table_type": "msdos"
+                "$ref": "#/components/schemas/StorageDisk"
               }
             }
           }
@@ -23454,8 +24198,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the partition id to retrieve"
+            }
           }
         ]
       },
@@ -23472,7 +24215,39 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DiskPartition"
+                  "type": "object",
+                  "properties": {
+                    "fstype": {
+                      "type": "string"
+                    },
+                    "total_bytes": {
+                      "type": "integer"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "fsck_result": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "disk_id": {
+                      "type": "integer"
+                    },
+                    "free_bytes": {
+                      "type": "integer"
+                    },
+                    "used_bytes": {
+                      "type": "integer"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -23537,16 +24312,18 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the partition id to enable/disable"
+            }
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DiskPartition"
+                "type": "object",
+                "additionalProperties": true
+              },
+              "example": {
+                "state": "umounted"
               }
             }
           }
@@ -23563,7 +24340,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiskPartition"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -23625,19 +24409,15 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "the partition id to check"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "additionalProperties": true
-              },
-              "example": {
-                "checkmode": "ro"
+                "$ref": "#/components/schemas/DiskPartition"
               }
             }
           }
@@ -23711,8 +24491,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "switch port id to get the configuration for"
+            }
           }
         ]
       },
@@ -23782,8 +24561,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "switch port id to update the configuration for"
+            }
           }
         ],
         "requestBody": {
@@ -23865,8 +24643,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "switch port id to get the statistics for"
+            }
           }
         ]
       }
@@ -24023,7 +24800,7 @@
       "get": {
         "operationId": "get_upload",
         "summary": "List upload",
-        "description": "Returns a list of `FileUpload`.\n\nRequires the `explorer` permission.\n\nError codes: `invalid_request`, `path_not_found`, `access_denied`, `destination_conflict`, `invalid_id`, `cancelled`",
+        "description": "List upload\n\nRequires the `explorer` permission.\n\nError codes: `invalid_request`, `path_not_found`, `access_denied`, `destination_conflict`, `invalid_id`, `cancelled`",
         "tags": [
           "upload"
         ],
@@ -24035,7 +24812,33 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FileUpload"
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "size": {
+                        "type": "integer"
+                      },
+                      "uploaded": {
+                        "type": "integer"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "last_update": {
+                        "type": "integer"
+                      },
+                      "start_date": {
+                        "type": "integer"
+                      },
+                      "upload_name": {
+                        "type": "string"
+                      },
+                      "dirname": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
@@ -24102,7 +24905,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUpload"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -24165,7 +24975,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUpload"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -24223,8 +25040,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the FileUpload to delete (closing the connection if needed)"
+            }
           }
         ]
       },
@@ -24302,8 +25118,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the FileUpload whose progress to track"
+            }
           }
         ]
       }
@@ -24318,7 +25133,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUpload"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -24376,8 +25198,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "Id of the in_progress FileUpload to cancel (closing the connection)"
+            }
           }
         ]
       }
@@ -24396,7 +25217,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FileUploadChunkResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FileUpload"
+                  }
                 }
               }
             }
@@ -24449,16 +25273,6 @@
               "description": "Someone on a side channel as cancelled the upload"
             }
           ]
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FileUploadStartAction"
-              }
-            }
-          }
         }
       }
     },
@@ -24671,7 +25485,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/VPNConnection"
+                    "$ref": "#/components/schemas/VPNUser"
                   }
                 }
               }
@@ -24750,7 +25564,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VPNUser"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -24819,9 +25640,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Connection id of the VPN connection to close"
+              "type": "integer"
+            }
           }
         ]
       }
@@ -24840,7 +25660,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "Result payload (schema not documented)."
+                  "$ref": "#/components/schemas/Download"
                 }
               }
             }
@@ -24913,8 +25733,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Name of the OpenVPN server to generate the configuration file for"
+            }
           },
           {
             "name": "login",
@@ -24922,8 +25741,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "VPN user login to generate the configuration file for"
+            }
           }
         ]
       }
@@ -24942,7 +25760,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "Result payload (schema not documented)."
+                  "$ref": "#/components/schemas/VPNUser"
                 }
               }
             }
@@ -25287,7 +26105,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VPNUser"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -25357,8 +26182,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Login of the VPN user to delete"
+            }
           }
         ]
       },
@@ -25448,8 +26272,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Login of the VPN user to retrieve"
+            }
           }
         ]
       },
@@ -25539,8 +26362,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "Login of the VPN user to update"
+            }
           }
         ],
         "requestBody": {
@@ -25641,9 +26463,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "Id of the VPN server to get the configuration for"
+              "type": "integer"
+            }
           }
         ]
       }
@@ -25921,7 +26742,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VPNClientConfig"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -26034,9 +26862,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "VPN client config id to delete"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -26169,9 +26996,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "VPN client config id to retrieve"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -26188,7 +27014,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VPNClientConfig"
+                  "$ref": "#/components/schemas/VPNServerConfig"
                 }
               }
             }
@@ -26304,9 +27130,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "VPN client config id to update"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -26314,7 +27139,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VPNClientConfig"
+                "$ref": "#/components/schemas/VPNServerConfig"
               }
             }
           }
@@ -26587,10 +27412,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiAp"
-                  }
+                  "$ref": "#/components/schemas/WifiAp"
                 }
               }
             }
@@ -26801,8 +27623,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       },
@@ -26920,8 +27741,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ],
         "requestBody": {
@@ -26950,10 +27770,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiAllowedComb"
-                  }
+                  "$ref": "#/components/schemas/WifiAllowedComb"
                 }
               }
             }
@@ -27054,8 +27871,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       }
@@ -27074,10 +27890,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiChannelUsage"
-                  }
+                  "$ref": "#/components/schemas/WifiChannelUsage"
                 }
               }
             }
@@ -27178,8 +27991,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       }
@@ -27198,10 +28010,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiNeighbor"
-                  }
+                  "$ref": "#/components/schemas/WifiNeighbor"
                 }
               }
             }
@@ -27302,8 +28111,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       }
@@ -27416,8 +28224,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       }
@@ -27436,10 +28243,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiStation"
-                  }
+                  "$ref": "#/components/schemas/WifiStation"
                 }
               }
             }
@@ -27540,8 +28344,7 @@
             "required": true,
             "schema": {
               "type": "integer"
-            },
-            "description": "wifi access point id"
+            }
           }
         ]
       }
@@ -27773,9 +28576,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "bss id (bssid MAC address)"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -27792,7 +28594,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WifiBss"
+                  "$ref": "#/components/schemas/WifiAp"
                 }
               }
             }
@@ -27892,9 +28694,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "bss id (bssid MAC address)"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -27902,7 +28703,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WifiBss"
+                "$ref": "#/components/schemas/WifiAp"
               }
             }
           }
@@ -28147,7 +28948,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WifiMacFilter"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -28237,6 +29045,16 @@
               "description": "invalid configuration 802.11ac is not supported on 2.4G band"
             }
           ]
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WifiMacFilter"
+              }
+            }
+          }
         }
       }
     },
@@ -28254,10 +29072,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WifiMacFilter"
-                  }
+                  "$ref": "#/components/schemas/WifiMacFilter"
                 }
               }
             }
@@ -28481,7 +29296,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse."
+            "description": "Success. Body is the unwrapped `result` of the Freebox APIResponse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WifiMacFilter"
+                }
+              }
+            }
           },
           "default": {
             "description": "Freebox error (APIResponse with success=false).",
@@ -28578,9 +29400,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "mac filter id"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -28697,9 +29518,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "mac filter id"
+              "type": "integer"
+            }
           }
         ]
       },
@@ -28816,9 +29636,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "mac filter id"
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -28847,7 +29666,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WifiPlanning"
+                  "$ref": "#/components/schemas/WifiChannelUsage"
                 }
               }
             }
@@ -28955,7 +29774,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WifiPlanning"
+                  "$ref": "#/components/schemas/WifiChannelUsage"
                 }
               }
             }
@@ -29054,7 +29873,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WifiPlanning"
+                "$ref": "#/components/schemas/WifiChannelUsage"
               }
             }
           }

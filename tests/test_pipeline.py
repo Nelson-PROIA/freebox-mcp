@@ -41,9 +41,10 @@ def test_response_kinds_classified():
     allowed = {"object", "array", "primitive", "none", "unknown"}
     kinds = {o["response_kind"] for o in ir["operations"]}
     assert kinds <= allowed
-    # the deterministic parser leaves a bounded number of unknowns for overrides
+    # the deterministic parser/heuristics leave a small bounded set of endpoints
+    # the docs never specify; those keep an honest untyped result (no AI fill-in)
     unknown = [o for o in ir["operations"] if o["response_kind"] == "unknown"]
-    assert len(unknown) <= 20
+    assert len(unknown) <= 12
 
 
 def test_openapi_is_valid_3_1(spec):

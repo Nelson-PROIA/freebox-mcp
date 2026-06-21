@@ -14,12 +14,14 @@ maintain**.
 ```
   ┌── 1. SCRAPER ──┐   ┌──── 2. GENERATOR ────┐   ┌─── 3. GENERATED CLIENT ───┐
   official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► ~230 MCP tools
-  (dev.freebox.fr)    (html + objects.inv)      (+ committed overrides.json)   (raw output — no edits)
+  (dev.freebox.fr)    (html + objects.inv)      (pure Python — no AI)          (raw output — no edits)
 ```
 
-**The generated client is the verbatim output of `FastMCP.from_openapi(spec)`** — no tool is
+**The whole pipeline is deterministic — no AI anywhere.** The scraper and generator are pure
+Python; the generated client is the verbatim output of `FastMCP.from_openapi(spec)` — no tool is
 hand-added, edited, pre-processed, or post-processed. A CI test (`test_tools_are_raw_generated_output`)
-enforces it: every exposed tool must be an `operationId` from the generated spec, or the build fails.
+enforces the last step: every exposed tool must be an `operationId` from the generated spec, or the
+build fails.
 
 The only hand-written code is the authenticated transport the generated client *runs on*
 (discovery · HMAC session · TLS · envelope unwrap) — things no API spec can express. It is generic,

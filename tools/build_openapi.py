@@ -1,8 +1,7 @@
 """Turn the intermediate representation into an OpenAPI 3.1 document.
 
-Pure, deterministic transform: ``tools/cache/ir.json`` (+ optional committed
-``spec/overrides.json``) -> ``spec/freebox-openapi.json``. No network, no AI.
-This is the step CI runs on every regeneration.
+Pure, deterministic transform: ``tools/cache/ir.json`` -> ``spec/freebox-openapi.json``.
+No network, no AI, no curated data. This is the step CI runs on every regeneration.
 
 Design notes
 ------------
@@ -25,31 +24,47 @@ from .common import (
     IR_PATH,
     MANIFEST_PATH,
     OPENAPI_PATH,
-    SPEC_DIR,
     SPEC_META_PATH,
     read_json,
     write_json,
 )
 
-OVERRIDES_PATH = SPEC_DIR / "overrides.json"
-
 # Object reference aliases (doc inconsistencies where a property names a type
 # that is documented under a slightly different object name).
 DEFAULT_ALIASES = {"VPNClientConfigPPTP": "VPNClientConfig"}
 
-# Freebox permissions are bound per section unless an op overrides them.
+# Deterministic section -> Freebox permission map. The docs don't encode the
+# required permission machine-readably, but it is uniform per section, so it is a small
+# committed config table. login carries no permission.
 SECTION_PERMISSION = {
+    "airmedia": "settings",
     "call": "calls",
+    "connection": "settings",
     "contacts": "contacts",
+    "dhcp": "settings",
     "download": "downloader",
     "download_config": "downloader",
     "download_feeds": "downloader",
+    "freeplug": "settings",
+    "fs": "explorer",
+    "ftp": "settings",
+    "igd": "settings",
+    "lan": "settings",
+    "lcd": "settings",
+    "nat": "settings",
+    "network_share": "settings",
     "parental": "parental",
     "pvr": "pvr",
-    "fs": "explorer",
+    "rrd": "settings",
     "share": "explorer",
+    "storage": "settings",
+    "switch": "settings",
+    "system": "settings",
     "upload": "explorer",
-    "network_share": "settings",
+    "upnpav": "settings",
+    "vpn": "settings",
+    "vpn_client": "settings",
+    "wifi": "settings",
 }
 
 
@@ -119,28 +134,14 @@ def property_schema(prop: dict, aliases: dict[str, str], known: set[str]) -> dic
     return sch
 
 
-def build_components(ir: dict, aliases: dict[str, str], overrides: dict) -> dict:
+def build_components(ir: dict, aliases: dict[str, str]) -> dict:
     known = set(ir["schemas"])
     schemas: dict[str, Any] = {}
-    sch_over = overrides.get("schemas", {})
     for name, s in ir["schemas"].items():
-        props = {}
-        required: list[str] = []
-        for p in s["properties"]:
-            props[p["name"]] = property_schema(p, aliases, known)
-            if p.get("optional") is False and p.get("readonly") is False:
-                pass  # do not force-require; Freebox docs rarely state requiredness
+        props = {p["name"]: property_schema(p, aliases, known) for p in s["properties"]}
         obj: dict[str, Any] = {"type": "object", "properties": props}
         if s.get("description"):
             obj["description"] = s["description"]
-        # apply schema-level overrides (required lists, extra props)
-        ov = sch_over.get(name, {})
-        if ov.get("required"):
-            obj["required"] = ov["required"]
-        elif required:
-            obj["required"] = required
-        if ov.get("properties"):
-            obj["properties"].update(ov["properties"])
         schemas[name] = obj
 
     # The universal response envelope.
@@ -162,12 +163,11 @@ def build_components(ir: dict, aliases: dict[str, str], overrides: dict) -> dict
     return schemas
 
 
-def result_schema(op: dict, aliases: dict[str, str], known: set[str], ov: dict) -> dict | None:
+def result_schema(op: dict, aliases: dict[str, str], known: set[str]) -> dict | None:
     """The *unwrapped* result schema for an operation's 200 response."""
-    o = ov.get("response", {})
-    kind = o.get("kind", op.get("response_kind"))
-    ref = o.get("ref", op.get("response_object"))
-    inferred = o.get("schema", op.get("response_inferred_schema"))
+    kind = op.get("response_kind")
+    ref = op.get("response_object")
+    inferred = op.get("response_inferred_schema")
     if kind == "object" and ref:
         return _ref(ref, aliases) if aliases.get(ref, ref) in known else {"type": "object"}
     if kind == "array":
@@ -206,12 +206,11 @@ def synth_description(op: dict, kind: str | None, ref: str | None) -> str:
     return ""
 
 
-def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dict) -> dict:
+def operation_object(op: dict, ir: dict, aliases: dict[str, str]) -> dict:
     known = set(ir["schemas"])
-    op_ov = overrides.get("operations", {}).get(op["operation_id"], {})
     page = op["page"]
     section = ir.get("sections", {}).get(page, {})
-    permission = op_ov.get("permission") or SECTION_PERMISSION.get(page)
+    permission = SECTION_PERMISSION.get(page)
     is_login = page == "login"
 
     parameters = []
@@ -233,45 +232,14 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
         parameters.append(
             {"name": name, "in": "query", "required": False, "schema": {"type": "string"}}
         )
-    # parameter overrides (typed + described)
-    for pov in op_ov.get("parameters", []):
-        existing = next(
-            (
-                p
-                for p in parameters
-                if p["name"] == pov["name"] and p["in"] == pov.get("in", "query")
-            ),
-            None,
-        )
-        entry = {
-            "name": pov["name"],
-            "in": pov.get("in", "query"),
-            "required": pov.get("required", existing["required"] if existing else False),
-            "schema": {"type": pov.get("type", "string")},
-        }
-        if pov.get("description"):
-            entry["description"] = pov["description"]
-        if existing:
-            parameters[parameters.index(existing)] = entry
-        else:
-            parameters.append(entry)
 
     # request body
     request_body = None
-    req_ov = op_ov.get("request", {})
-    req_kind = req_ov.get("kind")
-    req_ref = req_ov.get("ref", op.get("request_object"))
-    if req_kind == "none":
-        request_body = None
-    elif req_ref and (aliases.get(req_ref, req_ref) in known):
+    req_ref = op.get("request_object")
+    if req_ref and (aliases.get(req_ref, req_ref) in known):
         request_body = {
             "required": True,
             "content": {"application/json": {"schema": _ref(req_ref, aliases)}},
-        }
-    elif req_ov.get("schema"):
-        request_body = {
-            "required": True,
-            "content": {"application/json": {"schema": req_ov["schema"]}},
         }
     elif op["method"] in ("post", "put") and isinstance(op.get("example_request"), (dict, list)):
         request_body = {
@@ -284,7 +252,7 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
         }
 
     # responses
-    res = result_schema(op, aliases, known, op_ov)
+    res = result_schema(op, aliases, known)
     ok_content = {"application/json": {"schema": res}} if res is not None else None
     responses: dict[str, Any] = {
         "200": {
@@ -297,15 +265,15 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
         },
     }
 
-    res_kind = op_ov.get("response", {}).get("kind", op.get("response_kind"))
-    res_ref = op_ov.get("response", {}).get("ref", op.get("response_object"))
+    res_kind = op.get("response_kind")
+    res_ref = op.get("response_object")
     summary = op.get("summary") or synth_summary(op, res_kind, res_ref)
     lead = op.get("description") or synth_description(op, res_kind, res_ref)
 
     desc_parts = [lead or summary]
     if permission:
         desc_parts.append(f"Requires the `{permission}` permission.")
-    err_codes = section.get("error_codes", []) + op_ov.get("error_codes", [])
+    err_codes = section.get("error_codes", [])
     if err_codes:
         desc_parts.append("Error codes: " + ", ".join(f"`{e['code']}`" for e in err_codes[:30]))
 
@@ -332,13 +300,13 @@ def operation_object(op: dict, ir: dict, aliases: dict[str, str], overrides: dic
     return obj
 
 
-def expand_paths(ir: dict, aliases: dict[str, str], overrides: dict) -> dict:
+def expand_paths(ir: dict, aliases: dict[str, str]) -> dict:
     paths: dict[str, Any] = {}
     for op in ir["operations"]:
         targets = op.get("templated_alternatives") or [op["path"]]
         for idx, raw_path in enumerate(targets):
             path = "/" + raw_path.lstrip("/")
-            opobj = operation_object(op, ir, aliases, overrides)
+            opobj = operation_object(op, ir, aliases)
             if len(targets) > 1:
                 # disambiguate operationId per expanded alternative
                 suffix = raw_path.strip("/").split("/")[0]
@@ -350,12 +318,10 @@ def expand_paths(ir: dict, aliases: dict[str, str], overrides: dict) -> dict:
     return paths
 
 
-def build_openapi(ir: dict, overrides: dict, version: str) -> dict:
-    aliases = {**DEFAULT_ALIASES, **overrides.get("aliases", {})}
-    components_schemas = build_components(ir, aliases, overrides)
+def build_openapi(ir: dict, version: str) -> dict:
     known = set(ir["schemas"])
-    # ensure alias targets exist
-    aliases = {k: v for k, v in aliases.items() if v in known}
+    aliases = {k: v for k, v in DEFAULT_ALIASES.items() if v in known}
+    components_schemas = build_components(ir, aliases)
 
     tags = [
         {"name": s["slug"], "description": s.get("title", s["slug"])}
@@ -392,7 +358,7 @@ def build_openapi(ir: dict, overrides: dict, version: str) -> dict:
         ],
         "security": [{"FreeboxSession": []}],
         "tags": tags,
-        "paths": expand_paths(ir, aliases, overrides),
+        "paths": expand_paths(ir, aliases),
         "components": {
             "securitySchemes": {
                 "FreeboxSession": {
@@ -410,27 +376,38 @@ def build_openapi(ir: dict, overrides: dict, version: str) -> dict:
 
 def main() -> int:
     ir = read_json(IR_PATH)
-    overrides = read_json(OVERRIDES_PATH) if OVERRIDES_PATH.exists() else {}
     version = os.environ.get("FREEBOX_MCP_SPEC_VERSION") or ir["doc_version"]
 
-    spec = build_openapi(ir, overrides, version)
+    spec = build_openapi(ir, version)
     write_json(OPENAPI_PATH, spec)
 
     manifest = read_json(MANIFEST_PATH) if Path(MANIFEST_PATH).exists() else {}
     n_ops = sum(
         len([m for m in v if m in ("get", "post", "put", "delete")]) for v in spec["paths"].values()
     )
+    untyped = sum(
+        1
+        for item in spec["paths"].values()
+        for m, op in item.items()
+        if m in ("get", "post", "put", "delete")
+        and op["responses"]["200"]
+        .get("content", {})
+        .get("application/json", {})
+        .get("schema", {})
+        .get("description", "")
+        .startswith("Result payload")
+    )
     meta = {
         "doc_version": ir["doc_version"],
         "doc_source": "https://dev.freebox.fr/sdk/os/",
         "scraped_at": manifest.get("scraped_at"),
         "spec_version": version,
-        "overrides_applied": bool(overrides),
         "counts": {
             "paths": len(spec["paths"]),
             "operations": n_ops,
             "schemas": len(spec["components"]["schemas"]),
             "error_codes": ir["counts"].get("error_codes", 0),
+            "untyped_results": untyped,
         },
     }
     write_json(SPEC_META_PATH, meta)
@@ -438,9 +415,9 @@ def main() -> int:
     print(f"OpenAPI {spec['openapi']}  version={version}  doc={ir['doc_version']}")
     print(
         f"paths={meta['counts']['paths']} operations={n_ops} "
-        f"schemas={meta['counts']['schemas']} error_codes={meta['counts']['error_codes']}"
+        f"schemas={meta['counts']['schemas']} error_codes={meta['counts']['error_codes']} "
+        f"untyped_results={untyped}"
     )
-    print(f"overrides applied: {bool(overrides)}")
     print(f"-> {OPENAPI_PATH}")
     return 0
 
