@@ -13,7 +13,7 @@ maintain**.
 
 ```
   ┌── 1. SCRAPER ──┐   ┌──── 2. GENERATOR ────┐   ┌─── 3. GENERATED CLIENT ───┐
-  official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► ~230 MCP tools
+  official docs  ─►   tools/cache  ─────────►   spec/freebox-openapi.json ─►  FastMCP.from_openapi() ─► 227 MCP tools
   (dev.freebox.fr)    (html + objects.inv)      (pure Python — no AI)          (raw output — no edits)
 ```
 
@@ -29,7 +29,7 @@ never edited per-endpoint, and app registration / login live in the CLI, not as 
 
 - **Exhaustive** — 220 documented operations across 29 sections (wifi, lan, connection, calls,
   contacts, downloads, fs, nat, dhcp, vpn server + client, pvr, parental control, airmedia,
-  system, …) ⇒ ~230 MCP tools.
+  system, …) ⇒ 227 MCP tools (the full API; `login` is auth, not a tool).
 - **Self-maintaining** — the spec regenerates from the docs deterministically; CI does it weekly
   and auto-releases on change.
 - **Secure** — app-token never leaves your machine, HMAC-SHA1 sessions, TLS verified against the
@@ -95,6 +95,7 @@ freebox-mcp authorize       register the app (press the button on the box)
 freebox-mcp login           open a session and print granted permissions
 freebox-mcp discover        print discovery info and the chosen transport
 freebox-mcp tools           list the generated MCP tools
+freebox-mcp sections        list API sections + tool counts (values for FREEBOX_SECTIONS)
 freebox-mcp call OP [JSON]  invoke one operation, e.g. `freebox-mcp call get_system`
 ```
 

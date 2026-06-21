@@ -196,6 +196,8 @@ def cmd_sections(args) -> int:
         for method, op in item.items():
             if method in ("get", "post", "put", "delete"):
                 for tag in op.get("tags", []):
+                    if tag == "login":
+                        continue  # auth handshake, not an exposed tool group
                     counts[tag] += 1
     titles = {t["name"]: t.get("description", "") for t in spec.get("tags", [])}
     for name in sorted(counts):
