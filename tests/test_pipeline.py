@@ -79,13 +79,15 @@ def test_every_ref_resolves(spec):
 def test_paths_and_security(spec):
     assert all(p.startswith("/") for p in spec["paths"])
     assert "FreeboxSession" in spec["components"]["securitySchemes"]
+    # security is declared once, globally — no per-op/per-section tweaks in the spec
+    assert spec.get("security") == [{"FreeboxSession": []}]
+    assert all(
+        "security" not in op
+        for item in spec["paths"].values()
+        for m, op in item.items()
+        if m in ("get", "post", "put", "delete")
+    )
     n_ops = sum(
         1 for item in spec["paths"].values() for m in item if m in ("get", "post", "put", "delete")
     )
     assert n_ops == 232
-    # login operations carry empty security (they establish the session)
-    for path, item in spec["paths"].items():
-        if path.startswith("/login"):
-            for m, op in item.items():
-                if m in ("get", "post", "put", "delete"):
-                    assert op.get("security") == []

@@ -145,7 +145,6 @@ def operation_object(op: dict, ir: dict) -> dict:
     known = set(ir["schemas"])
     page = op["page"]
     section = ir.get("sections", {}).get(page, {})
-    is_login = page == "login"
 
     parameters = []
     seen_params = set()
@@ -204,7 +203,8 @@ def operation_object(op: dict, ir: dict) -> dict:
         "description": "\n\n".join(p for p in desc_parts if p).strip(),
         "tags": [page],
         "responses": responses,
-        "security": [] if is_login else [{"FreeboxSession": []}],
+        # No per-op/per-section security tweak — every op inherits the spec-level
+        # `security` uniformly. (The auth handshake is handled by the transport.)
         "x-freebox": {
             "page": page,
             "doc_anchor": op.get("anchor"),
