@@ -9,8 +9,10 @@ automatically — nothing here is hard-coded to today's API surface.
 from __future__ import annotations
 
 import hashlib
+import os
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -23,16 +25,34 @@ from .common import (
     write_json,
 )
 
-USER_AGENT = "freebox-mcp-spec-generator/0.1 (+https://github.com/; regenerates OpenAPI from docs)"
+USER_AGENT = (
+    "Mozilla/5.0 (compatible; freebox-mcp-spec-generator/0.1; "
+    "+https://github.com/Nelson-PROIA/freebox-mcp)"
+)
+TIMEOUT = float(os.environ.get("FREEBOX_SCRAPE_TIMEOUT", "60"))
+ATTEMPTS = int(os.environ.get("FREEBOX_SCRAPE_ATTEMPTS", "4"))
 
 # Index hrefs we never treat as API sections.
 _SKIP_LINK = re.compile(r"^(https?:|#|mailto:|_static|_sources|genindex|search|py-modindex)")
 
 
 def _fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=45) as resp:  # noqa: S310 (trusted host)
-        return resp.read()
+    """Fetch with retries + exponential backoff (the docs host can be slow/flaky
+    from CI runners, which would otherwise break the weekly regeneration)."""
+    headers = {"User-Agent": USER_AGENT, "Accept-Language": "fr,en;q=0.8"}
+    last_exc: Exception | None = None
+    for attempt in range(ATTEMPTS):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:  # noqa: S310 (trusted host)
+                return resp.read()
+        except Exception as exc:  # noqa: BLE001
+            last_exc = exc
+            if attempt < ATTEMPTS - 1:
+                wait = 2 ** (attempt + 1)
+                print(f"[scrape]   retry {attempt + 1}/{ATTEMPTS} for {url} in {wait}s ({exc})")
+                time.sleep(wait)
+    raise last_exc  # type: ignore[misc]
 
 
 def discover_sections(index_html: str) -> list[str]:
