@@ -107,7 +107,7 @@ freebox-mcp call OP [JSON]  invoke one operation, e.g. `freebox-mcp call get_sys
 | `FREEBOX_TRANSPORT` | `auto` | `auto` (verified HTTPS, else LAN HTTP), `https`, or `http`. |
 | `FREEBOX_API_BASE_URL` | — | Force a base URL, e.g. `https://xxxx.fbxos.fr:55688` (TLS). |
 | `FREEBOX_SECTIONS` | — | Comma list to expose only some sections, e.g. `wifi,lan,system`. |
-| `FREEBOX_EXCLUDE_SECTIONS` | — | Comma list of sections to hide. |
+| `FREEBOX_EXCLUDE_SECTIONS` | — | Comma list of sections to hide. Setting both this and `FREEBOX_SECTIONS` is an error. |
 | `FREEBOX_APP_ID` / `FREEBOX_APP_NAME` | `freebox-mcp` / `Freebox MCP` | App identity on the box. |
 
 Scoping the sections keeps the tool surface small when you only care about a few areas.
