@@ -68,9 +68,11 @@ class Settings:
     credentials_path: Path = field(default_factory=_default_credentials_path)
     cert_bundle: Path = CERT_BUNDLE
 
-    def __post_init__(self) -> None:  # pragma: no cover - trivial
-        # frozen dataclass: nothing to mutate, kept for clarity / future validation.
-        pass
+    def __post_init__(self) -> None:
+        # Both lists set would silently ignore the exclusions: an include list
+        # already hides every other section.
+        if self.include_sections and self.exclude_sections:
+            raise ValueError("set either FREEBOX_SECTIONS or FREEBOX_EXCLUDE_SECTIONS, not both")
 
 
 def load_settings() -> Settings:
